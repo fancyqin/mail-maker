@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mail Maker</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/common.js"></script>
+    
+    <link rel="stylesheet" href="css/ui-dialog.css">
+    <script src="js/dialog-min.js"></script>
+
+    <% if (page == "chooseDemo") { %>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anton" type="text/css">
+    <link rel="stylesheet" href="css/choose-demo.css">
+    <link rel="stylesheet" href="/css/demo.css">
+
+    <% } %>
+
+</head>
+<body>
+    <% if (page != "login") { %>
+    <div class="user-info">
+        <div class="grid">
+            <div class="login-info">
+                Welcome, <span class="J-user"></span> | <a href="/" class="J-logout">退出</a> 
+            </div>
+            <div class="act">
+                <a href="/user-list">用户列表</a> | <a href="/mail-list">邮件列表</a> | <a href="/choose-demo">添加邮件</a>
+            </div>
+        </div>
+    </div>
+    <% } %>

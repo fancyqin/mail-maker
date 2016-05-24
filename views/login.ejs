@@ -1,0 +1,22 @@
+<% include common/header %>
+
+
+    <script>
+        if ($.cookie('user')) {
+            window.location.href = '/mail-list';
+        }
+    </script>
+    <div class="login-page">
+        page: <%= page %>
+        <%= title %>
+        <form action="post" id="J-login-form">
+            <input class="input-text" type="text" name="id" id="J-id" placeholder="请输入用户名">
+            <input class="input-text" type="password" name="password" id="J-password" placeholder="请输入密码">
+            <button class="submit" type="submit" id="J-submit">登 录</button>
+        </form>
+    </div>
+        
+        
+    <script src="js/login.js"></script>
+    
+<% include common/footer %>

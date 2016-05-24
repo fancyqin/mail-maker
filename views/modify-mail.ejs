@@ -1,0 +1,55 @@
+<% include common/header %>
+<div id="wrapper">
+    
+</div>
+
+<script>
+    $(function(){
+        var url = window.location.href;
+        var urlAux = url.split('=');
+        var _id = urlAux[1];
+        console.log(_id)
+        $('body').append('<input id="J-mail-id" type="hidden" value="' + _id + '">')
+        $.ajax({
+            type: 'post',
+            url: './find-mail',
+            data: {
+                _id: _id
+            },
+            success: function(mail) {
+                console.log('ajax good')
+                //$('#wrapper').html(mail.mailHtml)
+
+                var type = mail.type;
+                var moduleUrl;
+
+                switch(type) {
+                    case '节日':
+                        moduleUrl = '/html/demo/demo-festival.html';
+                        break;
+                    case '专题':
+                        moduleUrl = '/html/demo/demo-topic.html';
+                        break;
+                    case '市场&行业分析报告':
+                        moduleUrl = '/html/demo/demo-report.html';
+                        break;
+                    case '市场&行业分析报告2':
+                        moduleUrl = '/html/demo/demo-report-2.html';
+                        break;
+                    case '资讯快递':
+                        moduleUrl = '/html/demo/demo-infor.html';
+                        break;
+                }
+                console.log(moduleUrl)
+
+                $.get(moduleUrl, function(data) {
+                    $('#wrapper').html(data);
+                    $('#tableInner').html(mail.mailHtml)
+                })
+
+
+            }
+        })
+    })
+</script>
+<% include common/footer %>

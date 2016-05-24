@@ -1,0 +1,68 @@
+<% include common/header %>
+
+<div class="grid">
+
+    page: <%= page %>
+
+    <div class="search">
+        <input type="text" name="" id=""> <button type="submit">搜索</button>
+    </div>
+
+    <div class="filter-box">
+        <select name="" id="">
+            <option>选择类别</option>
+            <option value="">节日</option>
+            <option value="">专题</option>
+            <option value=""></option>
+        </select>
+    </div>
+
+        
+    <table class="table-border">
+        <tr>
+            <th>标题</th>
+            <th>类别</th>
+            <th>说明</th>
+            <th>添加人</th>
+            <th>
+                添加日期
+                <a href="#">az</a>
+                <a href="#">za</a>
+            </th>
+            <th>修改人</th>
+            <th>
+                修改日期
+                <a href="#">az</a>
+                <a href="#">za</a>
+            </th>
+            <th>操作</th>
+        </tr>
+        <% for (var i=0; i<mailList.length; i++) {%>  
+            <tr data-id="<%= mailList[i]._id %>">
+                <td><%= mailList[i].title %></td>
+                <td><%= mailList[i].type %></td>
+                <td><%= mailList[i].description %></td>
+                <td><%= mailList[i].author %></td>
+                <td><%= moment(mailList[i].addDate).format('YYYY.MM.DD HH:mm') %></td>
+                <td><%= mailList[i].updater %></td>
+                <td>
+                    <% if (mailList[i].updateDate) { %>
+                        <%= moment(mailList[i].updateDate).format('YYYY.MM.DD HH:mm') %>
+                    <% } %>
+                </td>
+                <td>
+                    <a href="#" class="J-modify">修改</a> |
+                    <a href="#" class="J-delete">删除</a> |
+                    <a href="#" class="J-show-mail-html">邮件源码</a> |
+                    <a href="#" class="J-show-web-html">网页源码</a> |
+                    <a href="#" class="J-preview">预览</a>
+                </td>
+            </tr>
+        <% } %>
+    </table>
+</div>
+
+
+<script src="js/mail-list.js"></script>
+
+<% include common/footer %>

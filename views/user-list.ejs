@@ -1,0 +1,36 @@
+<% include common/header %>
+<div class="grid">
+    page: <%= page %>
+    <table class="J-user-list table-border">
+        <colgroup>
+            <col width="30%">
+            <col width="30%">
+        </colgroup>
+        <tr>
+            <th>用户</th>
+            <th>管理员</th>
+            <th>操作</th>
+        </tr>
+        
+        
+        <% for (var i=0; i<userList.length; i++) {%>   
+        
+        <tr>
+            <td class="J-user-name"><%= userList[i].name %></td>
+            <td><% if(userList[i].isAdmin) { %> 是 <% } else { %> 否 <% } %></td>
+            <td>
+                <a href="#" class="J-modify">修改</a>
+                <a href="#" class="J-delet" data-id="<%= userList[i]._id%>">删除</a>
+            </td>
+        </tr>
+        
+        <% } %>
+        <tr>
+            <td colspan="3"><a href="#" class="J-add-user">添加用户</a></td>
+        </tr>
+    </table>
+</div>
+
+<script src="js/user-list.js"></script>
+    
+<% include common/footer %>

@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font: 14px/1.5 arial, 'Microsoft Yahei';
+}
+.wrapper {
+    width: 300px;
+    margin: 20px auto;
+}
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.textarea {
+    box-sizing: border-box;
+    padding: 5px 10px;
+    width: 300px;
+    height: 100px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+.user-info {
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+}
+.login-info {
+    float: left;
+}
+.act {
+    float: right;
+}
+li {
+    list-style: none;
+    background: #f2f2f2;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+}
+
+.grid {
+    width: 800px;
+    margin: 0 auto;
+}
+.grid:before {
+    content: '';
+    display: table;
+    clear: both;
+}
+.table-border {
+    width: 100%;
+    border-collapse: collapse;
+    th,
+    td {
+    border: 1px solid #ccc;
+    padding: 2px 5px;
+}
+}
+
+.login-page {
+    font-size: 20px;
+    text-align: center;
+    width: 300px;
+    margin: 50px auto;
+}
+.login-page .input-text {
+    border: 1px solid #eee;
+    padding: 10px 20px;
+    height: 50px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 22px;
+    font-family: arial, 'Microsoft Yahei';
+    border-radius: 5px;
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+::-webkit-input-placeholder {
+    color: #ccc;
+}
+.login-page .submit {
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border: none;
+    background: #e64545;
+    color: #fff;
+    font-size: 22px;
+    font-family: arial, 'Microsoft Yahei';
+    border-radius: 5px;
+}
