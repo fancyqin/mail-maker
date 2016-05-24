@@ -20,10 +20,17 @@ router.post('/login', function *(next) {
 })
 
 router.get('/mail-list', function *(next) {
+    var pageSize = 4;
+    var url = this.originalUrl;
+    var urlAux = url.split('=');
+    var currentPage = urlAux[1] ? urlAux[1] : 1;
+        
     yield this.render('mail-list', {
         title: 'Hello World Koa!',
         page: 'mailList',
-        mailList: yield db.Mail.find({}).sort({'_id':-1}).exec(),
+        mailList: yield db.Mail.find({}).sort({'_id':-1}).skip((currentPage-1) * pageSize).limit(pageSize).exec(),
+        listLength: (yield db.Mail.find({})).length,
+        currentPage: currentPage,
         moment: moment
     });
 });

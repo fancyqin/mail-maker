@@ -1,4 +1,9 @@
 $(function () {
+
+
+    function page(n) {
+
+    }
     $(document)
         .on('click', '.J-modify', function () {
             // var d = dialog({
