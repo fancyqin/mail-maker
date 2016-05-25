@@ -6,15 +6,23 @@
             window.location.href = '/mail-list';
         }
     </script>
-    <div class="login-page">
-        page: <%= page %>
-        <%= title %>
-        <form action="post" id="J-login-form">
-            <input class="input-text" type="text" name="id" id="J-id" placeholder="请输入用户名">
-            <input class="input-text" type="password" name="password" id="J-password" placeholder="请输入密码">
-            <button class="submit" type="submit" id="J-submit">登 录</button>
+
+    
+    <div class="mask"></div>
+    <div class="login-box">
+        <h1>Mail Maker</h1>
+        <!-- page: <%= page %>
+        <%= title %> -->
+        <form action="" method="post" id="J-login-form">
+            <input class="input-text" type="text" name="id" id="J-id" placeholder="Username">
+            <input class="input-text" type="password" name="password" id="J-password" placeholder="Password">
+            <button class="submit" type="submit" id="J-submit">Login</button>
         </form>
     </div>
+
+    <footer>
+        Copyright &copy; MIC UED
+    </footer>
         
         
     <script src="js/login.js"></script>

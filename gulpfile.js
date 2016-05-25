@@ -3,7 +3,7 @@ var sass = require('gulp-ruby-sass');
 var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('sass', function () {
-    return sass('static/sass/*.scss',{sourcemap:true})
+    return sass('static/sass/*/*.scss',{sourcemap:true})
         .on('error', sass.logError)
         // For inline sourcemaps
         .pipe(sourcemaps.write())
@@ -17,5 +17,5 @@ gulp.task('sass', function () {
 });
 
 gulp.task('watch', function () {
-    gulp.watch(['static/sass/*.scss'], ['sass']);
+    gulp.watch(['static/sass/*/*.scss'], ['sass']);
 });

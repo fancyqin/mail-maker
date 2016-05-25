@@ -1,0 +1,196 @@
+html {
+    background: #fff;
+    height: 100%;
+}
+body {
+    height: 100%;
+    color: #333;
+}
+
+body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, group, menu, nav, section {
+    margin: 0;
+    padding: 0;
+}
+
+audio, canvas, video {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+body, button, input, select, textarea {
+    font: 12px/1.5 Arial, "Microsoft Yahei", sans-serif;
+}
+
+input, select, textarea {
+    vertical-align: middle;
+}
+
+button, input {
+    *overflow: visible;
+    line-height: normal;
+}
+
+/* placeholder add by zmx 2014-04-23 */
+::-webkit-input-placeholder { /* WebKit browsers */
+        color: #999;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color: #999;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color: #999;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+        color: #999;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+th {
+    text-align: inherit;
+}
+
+fieldset, img {
+    border: 0;
+}
+
+iframe {
+    display: block;
+}
+
+blockquote {
+    margin: 1em 4em 1em 2em;
+    padding: 0.6em 1em;
+    background: #f1f1f1;
+}
+
+blockquote blockquote {
+    padding: 0 0 0 1em;
+    margin-left: 2em;
+    border-left: 0.4em solid #dddddd;
+}
+
+acronym, abbr {
+    border-bottom: 1px dotted;
+    font-variant: normal;
+}
+
+abbr {
+    cursor: help;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+address, caption, cite, code, den, em, th, var {
+    font-style: normal;
+    font-weight: 500;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+caption, th {
+    text-align: left;
+}
+
+q:before, q:after {
+    content: '';
+}
+
+sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+/* link color */
+a {
+    // color: $linkColor;
+}
+
+a:hover {
+    // color: $hoverColor;
+    text-decoration: underline;
+}
+
+ins, a {
+    text-decoration: none;
+}
+
+small {
+    font-size: 11px;
+    color: #888;
+}
+
+
+/* clearfix */
+.clear {
+    clear: both;
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+.cf {
+    *zoom: 1;
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+/* Layout */
+.grid {
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+    width: 990px;
+    margin: 0 auto;
+}
+
+.fl,.pull-left {
+    float: left;
+}
+
+.fr,.pull-right {
+    float: right;
+}
+
+.c {
+    text-align: center;
+}
+
+.l {
+    text-align: left;
+}
+
+.r {
+    text-align: right;
+}
