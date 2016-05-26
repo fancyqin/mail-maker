@@ -15,8 +15,8 @@
         <link rel="stylesheet" href="/css/pages/login.css">
     <% } else if (page == "chooseDemo") { %>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anton" type="text/css">
-        <link rel="stylesheet" href="css/choose-demo.css">
-        <link rel="stylesheet" href="/css/demo.css">
+        <link rel="stylesheet" href="/css/pages/choose-demo.css">
+        <link rel="stylesheet" href="/css/pages/demo.css">
 
     <% } else { %>
         <!-- <link rel="stylesheet" href="/css/pages/login.css"> -->
@@ -39,6 +39,9 @@
                 <a <% if (page=="userList") {%> class="selected" <% } %>href="/user-list">用户列表</a>
                 <a <% if (page=="mailList") {%> class="selected" <% } %>href="/mail-list">邮件列表</a>
                 <a href="/choose-demo">添加邮件</a>
+            </div>
+            <div class="copyright">
+                Copyright &copy; <span class="ued">MIC UED</span>
             </div>
         </div>
     <% } %>

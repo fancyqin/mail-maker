@@ -2,32 +2,63 @@
 
 <div class="main">
     <div class="main-block">
-        page: <%= page %>
+        <div class="main-block-title">Mail List</div>
+        <!-- page: <%= page %> -->
 
-        <div class="search">
-            <form action="/mail-search" method="post">
-                <input type="text" name="keyword" id="" placeholder="请输入邮件标题"> <button type="submit">搜索</button>
-            </form>
+        
+
+        <div class="list-info">
+            <% if (page == "mailList") {%>
+                邮件总数 - <%=listLength%>
+                <span class="gap-line">|</span>
+                节日邮件 - 5
+                <span class="gap-line">|</span>
+                专题邮件 - 5
+                <span class="gap-line">|</span>
+                市场&行业分析报告 - 5
+                <span class="gap-line">|</span>
+                市场&行业分析报告2 - 5
+                <span class="gap-line">|</span>
+                资讯快递 - 5
+            <% } else if (page == "mailSearchList") { %>
+                搜索到 <%=listLength%> 封邮件
+            <% } %>
         </div>
 
         <div class="filter-box">
-            <form action="/mail-search" method="post">
-                <select name="type" id="">
-                    <option>选择类别</option>
-                    <option value="节日">节日</option>
-                    <option value="专题">专题</option>
-                    <option value="市场&行业分析报告">市场&行业分析报告</option>
-                    <option value="市场&行业分析报告2">市场&行业分析报告2</option>
-                    <option value="资讯快递">资讯快递</option>
-                </select>
-                <button type="submit">搜索</button>
-            </form>
-                
+            <div class="input-group">
+                <form action="/mail-search" method="post">
+                    <input class="input-text" type="text" name="keyword" id="" placeholder="请输入邮件标题"> <button class="btn" type="submit">搜索</button>
+                </form>
+            </div>
+            <div class="input-group">
+                <form action="/mail-search" method="post">
+                    <select class="select" name="type" id="">
+                        <option>选择类别</option>
+                        <option value="节日">节日</option>
+                        <option value="专题">专题</option>
+                        <option value="市场&行业分析报告">市场&行业分析报告</option>
+                        <option value="市场&行业分析报告2">市场&行业分析报告2</option>
+                        <option value="资讯快递">资讯快递</option>
+                    </select>
+                    <button class="btn" type="submit">搜索</button>
+                </form>
+            </div>
         </div>
 
-        <%=listLength%>
+        
         <% if (listLength > 0) { %>
             <table class="list-table">
+                <colgroup>
+                    <col width="">
+                    <col width="180">
+                    <col width="">
+                    <col width="100">
+                    <col width="100">
+                    <col width="100">
+                    <col width="100">
+                    <col width="120">
+                </colgroup>
                 <tr>
                     <th>标题</th>
                     <th>类别</th>
@@ -60,15 +91,16 @@
                             <% } %>
                         </td>
                         <td>
-                            <a href="#" class="J-modify">修改</a>
-                            <span class="gap-line">|</span>
-                            <a href="#" class="J-delete">删除</a>
-                            <span class="gap-line">|</span>
-                            <a href="#" class="J-show-mail-html">邮件源码</a>
-                            <span class="gap-line">|</span>
-                            <a href="#" class="J-show-web-html">网页源码</a>
-                            <span class="gap-line">|</span>
-                            <a href="#" class="J-preview">预览</a>
+                            <div class="act-list">
+                                <a class="act-title" href="#">操作</a>
+                                <ul>
+                                    <li><a href="#" class="J-modify">修改</a></li>
+                                    <li><a href="#" class="J-delete">删除</a></li>
+                                    <li><a href="#" class="J-show-mail-html">邮件源码</a></li>
+                                    <li><a href="#" class="J-show-web-html">网页源码</a></li>
+                                    <li><a href="#" class="J-preview">预览</a></li>
+                                </ul>
+                            </div>
                         </td>
                     </tr>
                 <% } %>

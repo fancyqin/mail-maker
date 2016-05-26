@@ -1,5 +1,6 @@
-@import "common/_layout";
-
+//@import "common/_layout";
+@import "../lib/_reset.scss";
+@import "../lib/_layout.scss";
 .cs-demo{
     padding: 20px;
     .cs-title{
