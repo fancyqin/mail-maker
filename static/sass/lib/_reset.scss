@@ -10,11 +10,6 @@ body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset,
     padding: 0;
 }
 
-audio, canvas, video {
-    display: inline-block;
-    *display: inline;
-    *zoom: 1;
-}
 
 body, button, input, select, textarea {
     font: 12px/1.5 Arial, "Microsoft Yahei", sans-serif;
@@ -25,11 +20,9 @@ input, select, textarea {
 }
 
 button, input {
-    *overflow: visible;
-    line-height: normal;
+    line-height: inherit;
 }
 
-/* placeholder add by zmx 2014-04-23 */
 ::-webkit-input-placeholder { /* WebKit browsers */
         color: #999;
 }
@@ -173,11 +166,11 @@ small {
     margin: 0 auto;
 }
 
-.fl,.pull-left {
+.fl {
     float: left;
 }
 
-.fr,.pull-right {
+.fr {
     float: right;
 }
 

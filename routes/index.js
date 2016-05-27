@@ -20,7 +20,7 @@ router.post('/login', function *(next) {
 })
 
 router.get('/mail-list', function *(next) {
-    var pageSize = 4;
+    var pageSize = 1;
     var url = this.originalUrl;
     var urlAux = url.split('=');
     var currentPage = urlAux[1] ? urlAux[1] : 1;
@@ -31,17 +31,19 @@ router.get('/mail-list', function *(next) {
         mailList: yield db.Mail.find({}).sort({'_id':-1}).skip((currentPage-1) * pageSize).limit(pageSize).exec(),
         listLength: (yield db.Mail.find({})).length,
         currentPage: currentPage,
-        moment: moment
+        moment: moment,
+        pageSize: pageSize
     });
 });
 router.post('/mail-search', function *(next) {
-    var pageSize = 4;
+    var pageSize = 1;
     var url = this.originalUrl;
     var urlAux = url.split('=');
     var currentPage = urlAux[1] ? urlAux[1] : 1;
     
     var keyword = this.request.body.keyword ? new RegExp(this.request.body.keyword) : 0;
     var type = this.request.body.type ? this.request.body.type : 0;
+    var _this = this;
     
     if (keyword) {
         yield this.render('mail-list', {
@@ -50,7 +52,9 @@ router.post('/mail-search', function *(next) {
             mailList: yield db.Mail.find({title: keyword}).sort({'_id':-1}).skip((currentPage-1) * pageSize).limit(pageSize).exec(),
             listLength: (yield db.Mail.find({title: keyword})).length,
             currentPage: currentPage,
-            moment: moment
+            moment: moment,
+            keyword: this.request.body.keyword,
+            pageSize: pageSize
         });
     } else if (type) {
         yield this.render('mail-list', {
@@ -59,7 +63,9 @@ router.post('/mail-search', function *(next) {
             mailList: yield db.Mail.find({type: type}).sort({'_id':-1}).skip((currentPage-1) * pageSize).limit(pageSize).exec(),
             listLength: (yield db.Mail.find({type: type})).length,
             currentPage: currentPage,
-            moment: moment
+            moment: moment,
+            keyword: type,
+            pageSize: pageSize
         });
     }
         
