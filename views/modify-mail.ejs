@@ -1,9 +1,5 @@
 <% include common/header %>
-<div class="main" id="wrapper">
-    
-</div>
-
-<script>
+<script type="text/javascript">
     $(function(){
         var url = window.location.href;
         var urlAux = url.split('=');
@@ -17,7 +13,7 @@
                 _id: _id
             },
             success: function(mail) {
-                console.log('ajax good')
+                console.log('ajax good' + mail)
                 //$('#wrapper').html(mail.mailHtml)
 
                 var type = mail.type;
@@ -47,9 +43,42 @@
                     $('#tableInner').html(mail.mailHtml)
                 })
 
-
             }
         })
     })
 </script>
+<div class="main" id="wrapper">
+
+</div>
+<div class="code-pop">
+    <div class="code">
+        <div class="close">X</div>
+        <textarea id="codeCopy"></textarea>
+    </div>
+</div>
+
+
+
+<script type="text/javascript" src="/js/lib/template/template.js"></script>
+
+<script type="text/javascript" src="/js/lib/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="/js/lib/ueditor/ueditor.all.js"></script>
+<script type="text/javascript" src="/js/lib/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+<script type="text/javascript" src="/js/ueditor.AddBrButton.js"></script>
+
+<script type="text/javascript" src="/js/demo.modules.js"></script>
+<script type="text/javascript" src="/js/demo.js"></script>
+
+
+
+
+
+
+
+
+
+
+<% include common/module.ejs%>
+
 <% include common/footer %>
