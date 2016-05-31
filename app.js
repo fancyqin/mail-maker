@@ -50,9 +50,91 @@ koa.use(index.routes(), index.allowedMethods());
 // mount root routes  
 app.use(koa.routes());
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//var logger = require('koa-logger');
+//var route = require('koa-route');
+//var views = require('co-views');
+//var serve = require('koa-static');
+
+
+var url = require('url');
+var http = require('http');
+var q = require('q');
+var sizeOf = require('image-size');
+
+
+
+// app.use(router.get('/upload',upload));
+// app.use(router.get('/checkImg',checkImg));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.on('error', function(err, ctx){
   log.error('server error', err, ctx);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 module.exports = app;

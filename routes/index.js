@@ -2,6 +2,11 @@ var router = require('koa-router')();
 var db = require('.././db');
 var moment = require('moment'); 
 
+var url = require('url');
+var http = require('http');
+var q = require('q');
+var sizeOf = require('image-size');
+
 router.get('/', function *(next) {
     yield this.render('login', {
         title: 'Hello World Koa!',
@@ -240,7 +245,46 @@ router.get('/choose-demo', function *(next) {
 
 
 
+router.get('/upload',upload);
+router.get('/checkImg',checkImg);
 
+function *upload(){
+    yield this.render('upload',{})
+}
+
+function *checkImg(next){
+
+    var deferred = q.defer();
+    var imgUrl = this.request.query.imgurl;
+    var options = url.parse(imgUrl);
+    getImgInfo(options,function(data){
+        console.log(data);
+        deferred.resolve(data);
+    });
+    this.body = yield deferred.promise;
+
+}
+
+
+
+
+function getImgInfo(options,cb){
+
+    http.get(options, function (response) {
+        var chunks = [];
+        response.on('data', function (chunk) {
+            chunks.push(chunk);
+        }).on('end', function() {
+            var buffer = Buffer.concat(chunks);
+            if (buffer.length > 0){
+                cb(sizeOf(buffer));
+            }else{
+                cb(null)
+            }
+
+        });
+    });
+}
 
 
 
