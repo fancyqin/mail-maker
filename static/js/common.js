@@ -13,11 +13,11 @@ $(function(){
         return false;
     })
 
-    $('.J-demo-link').on('click', function(){
-        $.get($(this).attr('href'), function(data) {
-            $('#J-choose-demo').remove();
-            $('#J-demo-wrapper').html(data);
-        })
-        return false;
-    })
+    // $('.J-demo-link').on('click', function(){
+    //     $.get($(this).attr('href'), function(data) {
+    //         $('#J-choose-demo').remove();
+    //         $('#J-demo-wrapper').html(data);
+    //     })
+    //     return false;
+    // })
 });

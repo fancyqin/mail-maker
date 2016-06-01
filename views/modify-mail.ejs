@@ -1,84 +1,268 @@
+
+
+
+
+
+
 <% include common/header %>
-<script type="text/javascript">
-    $(function(){
-        var url = window.location.href;
-        var urlAux = url.split('=');
-        var _id = urlAux[1];
-        console.log(_id)
-        $('body').append('<input id="J-mail-id" type="hidden" value="' + _id + '">')
-        $.ajax({
-            type: 'post',
-            url: './find-mail',
-            data: {
-                _id: _id
-            },
-            success: function(mail) {
-                console.log('ajax good' + mail)
-                //$('#wrapper').html(mail.mailHtml)
 
-                var type = mail.type;
-                var moduleUrl;
+<input type="hidden" name="" id="J-mail-id" value="<%= mail._id %>">
+<input type="hidden" name="" id="J-mail-modify">
+<div class="main">
 
-                switch(type) {
-                    case '节日':
-                        moduleUrl = '/html/demo/demo-festival.html';
-                        break;
-                    case '专题':
-                        moduleUrl = '/html/demo/demo-topic.html';
-                        break;
-                    case '市场&行业分析报告':
-                        moduleUrl = '/html/demo/demo-report.html';
-                        break;
-                    case '市场&行业分析报告2':
-                        moduleUrl = '/html/demo/demo-report-2.html';
-                        break;
-                    case '资讯快递':
-                        moduleUrl = '/html/demo/demo-infor.html';
-                        break;
-                }
-                console.log(moduleUrl)
 
-                $.get(moduleUrl, function(data) {
-                    $('#wrapper').html(data);
-                    $('#tableInner').html(mail.mailHtml)
+    <% if (mail.type == "节日") { %>
+        <div class="wrap demo-edit">
+            <div class="content">
+                <div class="demo-wrap cf">
+                    <% include demo/demo-sider/festival %>
+                    <div class="demo">
+                        <div id="tableInner" class="demo-fixed">
+                            <%- mail.mailHtml %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $('#mailTitle').val('<%= mail.title %>')
+            $('#mailDescription').val('<%= mail.description %>')
+            $(function(){
+                $.demoLoad([
+                    'festival-banner',
+                    'festival-inner',
+                    'festival-prod4-title',
+                    'festival-prodImg-1',
+                    'festival-prodImg-2',
+                    'festival-prodImg-3',
+                    'festival-prodImg-4',
+                    'festival-btn'
+                ]);
+            })
+        </script>
+    <% } else if (mail.type == "专题") { %>
+        <div class="wrap demo-edit">
+            <div class="content">
+                <div class="demo-wrap cf">
+                    <% include demo/demo-sider/topic %>
+                    <div class="demo">
+                        <div id="tableInner" class="demo-fixed">
+                            <%- mail.mailHtml %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $('#mailTitle').val('<%= mail.title %>')
+            $('#mailDescription').val('<%= mail.description %>')
+            $(function(){
+                $.demoLoad([
+                   'topic-banner',
+                   'topic-inner',
+                   'topic-prodImg-1',
+                   'topic-prodImg-2',
+                   'topic-prodImg-3',
+                   'topic-prodImg-4',
+                   'topic-prodImg-5',
+                   'topic-prodImg-6',
+                   'topic-prodTxt-1',
+                   'topic-prodTxt-2',
+                   'topic-prodTxt-3',
+                   'topic-prodTxt-4',
+                   'topic-prodTxt-5',
+                   'topic-prodTxt-6',
+                   'topic-btn'
+                ]);
+            })
+        </script>
+
+    <% } else if (mail.type == "市场&行业分析报告") { %>
+        <div class="wrap demo-edit">
+            <div class="content">
+                <div class="demo-wrap cf">
+                    <% include demo/demo-sider/report %>
+                    <div class="demo">
+                        <div id="tableInner" class="demo-fixed">
+                            <%- mail.mailHtml %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $('#mailTitle').val('<%= mail.title %>')
+            $('#mailDescription').val('<%= mail.description %>')
+            $(function(){
+                $.demoLoad([
+                    'report-banner',
+                    'report-inner',
+                    'report-btn',
+                    'report-Img-1',
+                    'report-Img-2',
+                    'report-Img-3',
+                    'report-Img-4',
+                    'report-Img-5',
+                    'report-Txt-1',
+                    'report-Txt-2',
+                    'report-Txt-3',
+                    'report-Txt-4',
+                    'report-Txt-5',
+                    'report-moreTxt',
+                    'report-moreTxt-2',
+                    'report-otherTxt-1',
+                    'report-otherTxt-2',
+                    'report-otherTxt-3',
+                    'report-otherTxt-4',
+                    'report-otherTxt-5',
+                    'report-otherTxt-6',
+                    'report-types'
+                ]);
+            })
+        </script>
+
+    <% } else if (mail.type == "市场&行业分析报告2") { %>
+        <div class="wrap demo-edit">
+            <div class="content">
+                <div class="demo-wrap cf">
+                    <% include demo/demo-sider/report-2 %>
+                    <div class="demo">
+                        <div id="tableInner" class="demo-fixed">
+                            <%- mail.mailHtml %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $('#mailTitle').val('<%= mail.title %>')
+            $('#mailDescription').val('<%= mail.description %>')
+            $(function(){
+                $.demoLoad([
+                    'report-banner',
+                    'report-mainImg-1',
+                    'report-mainImg-2',
+                    'report-mainTxt-1',
+                    'report-mainTxt-2',
+                    'report-btn',
+                    'report-btn-2',
+                    'report-Img-1',
+                    'report-Img-2',
+                    'report-Img-3',
+                    'report-Img-4',
+                    'report-Img-5',
+                    'report-Txt-1',
+                    'report-Txt-2',
+                    'report-Txt-3',
+                    'report-Txt-4',
+                    'report-Txt-5',
+                    'report-moreTxt',
+                    'report-moreTxt-2',
+                    'report-otherTxt-1',
+                    'report-otherTxt-2',
+                    'report-otherTxt-3',
+                    'report-otherTxt-4',
+                    'report-otherTxt-5',
+                    'report-otherTxt-6',
+                    'report-types'
+                ]);
+            })
+        </script>
+
+    <% } else if (mail.type == "资讯快递") { %>
+        <div class="wrap demo-edit">
+            <div class="content">
+                <div class="demo-wrap cf">
+                    <% include demo/demo-sider/infor %>
+                    <div class="demo">
+                        <div id="tableInner" class="demo-fixed">
+                            <%- mail.mailHtml %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function(){
+
+                var $addCtrlbox = $('.add-ctrlbox');
+                $('.J-addMod').click(function(){
+
+                    var box = $(this).parent();
+                    var title = box.attr('data-title');
+                    var num = box.find('.itm').length;
+                    var name = box.attr('data-modspace');
+                    var JmodSpace = 'J-' +name;
+                    if (num < 4){
+
+                        var $tpl = $('.'+JmodSpace+':last');
+                        var tplHTML = $tpl.html();
+                        var newModSpace = name+'-'+(num+1);
+                        $tpl.after('<tr class="'+JmodSpace+'" data-index="'+ (num+1) +'">'+ tplHTML +'</tr>');
+                        $tpl = $('.'+JmodSpace+':last');
+                        $tpl.find('.mod-space').attr('data-name',newModSpace);
+                        $.demoLoad([newModSpace]);
+
+                        $(this).siblings('.itm:last').find('.J-del').remove();
+                        $(this).before('<span class="itm">'+ title + (num+1) +'<i class="J-del">X</i></span>');
+                    }
+
+                });
+
+                $addCtrlbox.on('click','.J-del',function(){
+                    var index = $(this).parent().index('.itm');
+                    var num = $addCtrlbox.find('.itm').length;
+                    var name = $(this).parents('.add-ctrlbox').attr('data-modspace');
+                    if(num > 1){
+
+                        $('.J-'+ name +':[data-index='+ (index+1) +']').remove();
+
+                        $addCtrlbox.find('.itm:last').remove();
+                        if($addCtrlbox.find('.itm:last').index('.itm') > 0){
+                            $addCtrlbox.find('.itm:last').append('<i class="J-del">X</i>');
+                        }
+                    }
+
+
                 })
+            })
 
-            }
-        })
-    })
-</script>
-<div class="main" id="wrapper">
+        </script>
 
+        <script type="text/javascript">
+            $('#mailTitle').val('<%= mail.title %>')
+            $('#mailDescription').val('<%= mail.description %>')
+            $(function(){
+                $.demoLoad([
+                    'infor-month',
+                    'infor-firstTitle',
+                    'infor-firstImg',
+                    'infor-firstInner',
+                    'infor-new-1',
+                    'infor-story-1',
+                    'infor-corpNew',
+                    'infor-study'
+                ]);
+            })
+        </script>
+    <% } %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 </div>
-<div class="code-pop">
-    <div class="code">
-        <div class="close">X</div>
-        <textarea id="codeCopy"></textarea>
-    </div>
-</div>
 
 
-
-<script type="text/javascript" src="/js/lib/template/template.js"></script>
-
-<script type="text/javascript" src="/js/lib/ueditor/ueditor.config.js"></script>
-<script type="text/javascript" src="/js/lib/ueditor/ueditor.all.js"></script>
-<script type="text/javascript" src="/js/lib/ueditor/lang/zh-cn/zh-cn.js"></script>
-
-<script type="text/javascript" src="/js/ueditor.AddBrButton.js"></script>
-
-<script type="text/javascript" src="/js/demo.modules.js"></script>
-<script type="text/javascript" src="/js/demo.js"></script>
-
-
-
-
-
-
-
-
-
-
-<% include common/module.ejs%>
-
+<% include common/module %>
 <% include common/footer %>

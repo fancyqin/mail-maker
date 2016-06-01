@@ -25,7 +25,7 @@ router.post('/login', function *(next) {
 })
 
 router.get('/mail-list', function *(next) {
-    var pageSize = 1;
+    var pageSize = 5;
     var url = this.originalUrl;
     var urlAux = url.split('=');
     var currentPage = urlAux[1] ? urlAux[1] : 1;
@@ -41,7 +41,7 @@ router.get('/mail-list', function *(next) {
     });
 });
 router.post('/mail-search', function *(next) {
-    var pageSize = 1;
+    var pageSize = 5;
     var url = this.originalUrl;
     var urlAux = url.split('=');
     var currentPage = urlAux[1] ? urlAux[1] : 1;
@@ -76,6 +76,18 @@ router.post('/mail-search', function *(next) {
         
 })
 
+router.get('/cook-mail', function *(next) {
+
+    var url = this.originalUrl;
+    var urlAux = url.split('=');
+
+    // this.body = urlAux[1]
+    yield this.render('cook-mail', {
+        mailType: urlAux[1],
+        page: 'cookMail'
+    })
+})
+
 router.post('/save-mail', function *(next) {
     //this.body = 'save mail';
     var mail = this.request.body.mail;
@@ -103,7 +115,35 @@ router.post('/save-mail', function *(next) {
     })
 })
 
+router.post('/save-mail-again', function *(next) {
+    var _mail = this.request.body.mail;
+    var _id = _mail._id;
+    var _this = this;
 
+
+    yield db.Mail.findOne({_id: _id}, function(err, mail) {
+        if (err) throw err;
+
+        console.log('good')
+
+        //_this.body = 'success'
+
+        mail.title = _mail.title;
+        mail.description = _mail.description;
+        mail.mailHtml = _mail.mailHtml;
+        mail.webHtml = _mail.webHtml;
+
+        // _this.body = mail;
+
+        mail.save(function(err) {
+            if (err) throw err;
+            console.log('update success')
+        })
+
+
+        _this.body = 'update success'
+    })
+})
 router.post('/modify-mail', function *(next) {
     var _mail = this.request.body.mail;
     var _id = _mail._id;
@@ -137,10 +177,16 @@ router.post('/modify-mail', function *(next) {
 })
 
 router.get('/modify-mail', function *(next) {
-    this.body = 'goodddd'
+    
+    var url = this.originalUrl;
+    var urlAux = url.split('=');
+    var _id = urlAux[1];
+
+
     yield this.render('modify-mail', {
         title: 'Hello World Koa!',
-        page: 'chooseDemo'
+        page: 'cookMail',
+        mail: yield db.Mail.findOne({_id: _id}).exec()
     })
 })
 
@@ -159,7 +205,6 @@ router.post('/find-mail', function *(next) {
     yield db.Mail.findOne({_id: _id}, function(err, mail) {
         if(err) throw err;
         _this.body = mail;
-
     })
 })
 

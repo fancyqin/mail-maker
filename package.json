@@ -6,11 +6,13 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "co-views": "^2.1.0",
     "co": "^4.6.0",
+    "co-views": "^2.1.0",
     "cookies": "^0.6.1",
     "debug": "^2.2.0",
     "ejs": "^2.4.1",
+    "image-size": "^0.5.0",
+    "jquery": "^2.2.4",
     "koa": "^1.1.2",
     "koa-bodyparser": "^2.0.1",
     "koa-json": "^1.1.1",
@@ -22,7 +24,6 @@
     "koa-views": "^3.1.0",
     "moment": "^2.13.0",
     "mongoose": "^4.3.7",
-    "image-size": "^0.5.0",
     "q": "^1.4.1"
   },
   "devDependencies": {

@@ -322,18 +322,34 @@ $(function () {
             console.log(mail)
 
             if ($("#J-mail-id").length) {
-                $.ajax({
-                    type: 'post',
-                    url: './modify-mail',
-                    data: {
-                        mail: mail
-                    },
-                    success: function(msg) {
-                        console.log('ajax success');
-                        console.log(msg);
-                        alert('保存成功!');
-                    }
-                })
+                if($("#J-mail-modify").length) {
+                    $.ajax({
+                        type: 'post',
+                        url: './modify-mail',
+                        data: {
+                            mail: mail
+                        },
+                        success: function(msg) {
+                            console.log('ajax success');
+                            console.log(msg);
+                            alert('保存成功!');
+                        }
+                    })
+                } else {
+                    $.ajax({
+                        type: 'post',
+                        url: './save-mail-again',
+                        data: {
+                            mail: mail
+                        },
+                        success: function(msg) {
+                            console.log('ajax success');
+                            console.log(msg);
+                            alert('保存成功!');
+                        }
+                    })
+                }
+                    
             } else {
                 $.ajax({
                     type: 'post',
@@ -345,7 +361,7 @@ $(function () {
                         console.log('ajax success');
                         console.log(id);
                         alert('保存成功!');
-                        $('body').append('<input id="J-mail-id" type="hidden" value="' + id + '">')
+                        $('body').append('<input id="J-mail-id" type="hidden" value="' + id + '">');
                     }
                 })    
             }
