@@ -1,5 +1,6 @@
 $(function () {
 
+    var isSaved = false;
 
     $.extend({
         'demoLoad': function (name) {
@@ -142,6 +143,8 @@ $(function () {
             postParams:{
                 month: new Date().getMonth()+1+'',
                 mailTypeCode:'MICEN'
+            },button: {
+                text: '上传图片'
             }
         }).on('dialogComplete',function(){
             this.startUpload();
@@ -164,8 +167,8 @@ $(function () {
                         }
                     }else{
                         var href = window.location.href;
-                        if (confirm('上传失败，未登录批邮业务系统，是否暂存并跳转至登录界面？')){
-                            //todo 暂存操作 去除关闭提示
+                        if (confirm('上传失败，可能您未登录批邮业务系统，是否暂存并跳转至登录界面？')){
+                            saveMail();
                             window.location = "http://edm.focuschina.com/loginIndex?nextUrl=" + href;
                         }
 
@@ -325,6 +328,13 @@ $(function () {
     });
 
     $('#save').click(function() {
+
+        saveMail();
+        
+    });
+
+    function saveMail(){
+
         if ($('#mailTitle').val() == '') {
             alert('邮件主题不能为空')
         } else {
@@ -393,6 +403,7 @@ $(function () {
                             console.log('ajax success');
                             console.log(msg);
                             alert('保存成功!');
+                            isSaved = true;
                         }
                     })
                 } else {
@@ -406,10 +417,11 @@ $(function () {
                             console.log('ajax success');
                             console.log(msg);
                             alert('保存成功!');
+                            isSaved = true;
                         }
                     })
                 }
-                    
+
             } else {
                 $.ajax({
                     type: 'post',
@@ -421,15 +433,27 @@ $(function () {
                         console.log('ajax success');
                         console.log(id);
                         alert('保存成功!');
+                        isSaved = true;
                         $('body').append('<input id="J-mail-id" type="hidden" value="' + id + '">');
                     }
-                })    
+                })
             }
 
-    
+
         }
-        
-    });
+
+    }
+
+
+        window.onbeforeunload = function (e) {
+            if(!isSaved){
+                var msg = '您正准备离开此页，您未保存的编辑数据将会丢失！！！！慎重啊，小主~';
+                e.returnValue = msg;
+                return msg;
+            }
+        };
+
+
 
     $('#exportWebMail').click(function() {
         var lang = JSON.parse($('#mailHFType').val()).lang;
@@ -504,12 +528,6 @@ $(function () {
 
     }
 
-
-    window.onbeforeunload = function (e) {
-        var msg = '您正准备离开此页，您未保存的编辑数据将会丢失！！！！慎重啊，小主~';
-        e.returnValue = msg;
-        return msg;
-    };
 
     function changeMailType(){
         var $mBox = $('#mailType');
