@@ -1,5 +1,9 @@
 @import "../lib/_reset.scss";
 @import "../lib/_layout.scss";
+body {
+    font-size: 14px;
+    background: #e9e9e9;
+}
 .cs-demo{
     padding: 20px;
     .cs-title{

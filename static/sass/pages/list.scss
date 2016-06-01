@@ -125,3 +125,53 @@ body {
         }
     }
 }
+.user-list {
+    margin: 0 -5px -10px;
+}
+.user-card {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin: 10px 5px;
+    padding: 5px 10px;
+    float: left;
+    font-size: 12px;
+    height: 50px;
+    .name {
+        font-size: 30px;
+        line-height: 50px;
+        float: left;
+        margin-right: 10px;
+    }
+    .info-act {
+        float: left;
+        height: 50px;
+        position: relative;
+        width: 60px;
+    }
+    .is-admin {
+        color: #ccc;
+        display: block;
+        margin-top: 5px;
+    }
+    
+    .act {
+        position: absolute;
+        bottom: 5px;
+    }
+    &.add-user {
+        padding: 0;
+        height: auto;
+        a {
+            display: block;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            font-size: 50px;
+        }
+    }
+    &:hover {
+        box-shadow: 0 0 5px rgba(0,0,0,.2);
+    }
+
+}

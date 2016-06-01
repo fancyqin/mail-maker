@@ -3,7 +3,7 @@
     <div class="main-block">
         <div class="main-block-title">User List</div>
         <!-- page: <%= page %> -->
-        <table class="J-user-list list-table">
+<!--         <table class="J-user-list list-table">
             <colgroup>
                 <col width="30%">
                 <col width="30%">
@@ -31,20 +31,29 @@
             <tr>
                 <td colspan="3"><a href="#" class="J-add-user">添加用户</a></td>
             </tr>
-        </table>
+        </table> -->
 
-        <% for (var i=0; i<userList.length; i++) {%>
 
-            <div class="user-card">
-                <span class="name"><%= userList[i].name %></span>
-                <span class="is-admin"><% if(userList[i].isAdmin) { %> 管理员 <% } %></span>
-                <span class="act">
-                    <a href="#" class="J-modify">修改</a>
-                    <a href="#" class="J-delet" data-id="<%= userList[i]._id%>">删除</a>
-                </span>
-            </div>
-            
-        <% } %>
+        <div class="user-list cf">
+            <% for (var i=0; i<userList.length; i++) {%>
+
+                
+                    <div class="user-card">
+                        <div class="name"><%= userList[i].name %></div>
+                        <div class="info-act">
+                            <span class="is-admin"><% if(userList[i].isAdmin) { %> 管理员 <% } %></span>
+                            <span class="act">
+                                <a href="#" class="J-modify">修改</a>
+                                <span class="gap-line">|</span>
+                                <a href="#" class="J-delet" data-id="<%= userList[i]._id%>">删除</a>
+                            </span>
+                        </div>
+                    </div>
+
+
+            <% } %>
+            <div class="user-card add-user"><a href="#" class="J-add-user">+</a></div>
+        </div>
 
     </div>
     
