@@ -2,24 +2,19 @@
 
 
 
-<div class="main">
-
-    <% if (mailType=="festival") { %>
-        <% include demo/festival %>
-    <% } else if (mailType == "topic") { %>
-        <% include demo/topic %>
-    <% } else if (mailType == "report") { %>
-        <% include demo/report %>
-    <% } else if (mailType == "report2") { %>
-        <% include demo/report-2 %>
-    <% } else if (mailType == "infor") { %>
-        <% include demo/infor %>
-    <% } %>
+<% if (mailType=="festival") { %>
+    <% include demo/festival %>
+<% } else if (mailType == "topic") { %>
+    <% include demo/topic %>
+<% } else if (mailType == "report") { %>
+    <% include demo/report %>
+<% } else if (mailType == "report2") { %>
+    <% include demo/report-2 %>
+<% } else if (mailType == "infor") { %>
+    <% include demo/infor %>
+<% } %>
 
 
-    
-</div>
 
 
-<% include common/module %>
 <% include common/footer %>
