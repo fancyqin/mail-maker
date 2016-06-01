@@ -91,6 +91,7 @@ $(function () {
             var linkUrl = $link.attr('href');
             $inputLink.val(linkUrl);
         }
+
         $inputLink.blur(function () {
             var val = $(this).val();
             var img = $img.prop('outerHTML');
@@ -114,7 +115,66 @@ $(function () {
             $img.attr('alt', val);
         });
 
+        //上传图片
+        var upload = place.find('.J-imgUpload');
+        var idn = place.attr('id');
+        var nidn = 'UploadIMG'+ idn;
+        console.log(nidn)
+        upload.attr('id',nidn);
+        uploadIMG(nidn,place,box);
+
+
+
     }
+
+
+
+    //上传
+
+
+    function uploadIMG(id,place,box){
+        var uploader = new FOCUS.widget.Upload({
+            priority: ['iframe'],
+            placeholder: '#'+id,
+            uploadURL:'http://edm.focuschina.com/uploadImg',
+            filePostName:'file',
+            fileTypes:'*.gif, *.jpg, *.png, *.jpeg',
+            postParams:{
+                month: new Date().getMonth()+1+'',
+                mailTypeCode:'MICEN'
+            }
+        }).on('dialogComplete',function(){
+            this.startUpload();
+        }).on('uploadComplete', function(file){
+            var nowDate = new Date();
+            var imgUrl = 'http://edm.made-in-china.com/MICEN/'+ nowDate.getFullYear()+'/'+(nowDate.getMonth()+1)+'/'+  file.fullname;
+
+            $.ajax({
+                url:'/checkImg',
+                data:{
+                    imgurl: imgUrl
+                },
+                success: function(data){
+                    if (data){
+                        if (data.width ===0 || data.height ===0){
+                            alert('上传失败');
+                        }else{
+                            place.find('.imgSrc').val(imgUrl);
+                            box.find('img').attr('src',imgUrl);
+                        }
+                    }else{
+                        var href = window.location.href;
+                        if (confirm('上传失败，未登录批邮业务系统，是否暂存并跳转至登录界面？')){
+                            //todo 暂存操作 去除关闭提示
+                            window.location = "http://edm.focuschina.com/loginIndex?nextUrl=" + href;
+                        }
+
+                    }
+                }
+            })
+        })
+    }
+
 
 
     //按钮
