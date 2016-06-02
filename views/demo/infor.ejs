@@ -14,6 +14,7 @@
                         <tr>
                             <td style="background:#ebebeb; ">
                                 <input id="mailHFType" type="hidden" value='{"type":"2a","lang":"cn"}'>
+                                <input id="numOfBlocks" type="hidden" value='{"news":1,"storys":1}'>
                                 <table align="center" border="0" cellpadding="0" cellspacing="0" width="700">
                                     <tbody>
                                     <tr>
@@ -445,12 +446,30 @@
     $(function(){
 
         var $addCtrlbox = $('.add-ctrlbox');
+        var numOfBlocks = $('#numOfBlocks').val();
+        var nums = JSON.parse(numOfBlocks);
+        $addCtrlbox.find('.itm').remove();
+
+        addBlock('新闻',nums.news);
+        addBlock('故事',nums.storys);
+        console.log(nums);
+
+        function addBlock(type,num){
+            var $thisB = $('.add-ctrlbox[data-title='+type+']')
+            for (var i = num;i> 0;i--){
+                $thisB.prepend('<span class="itm">'+ type +i+'</span>')
+            }
+            $thisB.find('.itm:last').append('<i class="J-del">X</i>');
+            $thisB.find('.itm:first').find('.J-del').remove();
+        }
+
         $('.J-addMod').click(function(){
 
             var box = $(this).parent();
             var title = box.attr('data-title');
             var num = box.find('.itm').length;
             var name = box.attr('data-modspace');
+            var JSONname = name.split('-')[1]+'s';
             var JmodSpace = 'J-' +name;
             if (num < 4){
 
@@ -461,6 +480,10 @@
                 $tpl = $('.'+JmodSpace+':last');
                 $tpl.find('.mod-space').attr('data-name',newModSpace);
                 $.demoLoad([newModSpace]);
+
+                nums[JSONname] = num+1;
+
+                $('#numOfBlocks').attr('value',JSON.stringify(nums));
 
                 $(this).siblings('.itm:last').find('.J-del').remove();
                 $(this).before('<span class="itm">'+ title + (num+1) +'<i class="J-del">X</i></span>');
@@ -473,11 +496,15 @@
             var index = $(this).parent().index();
             var num = $thisBox.find('.itm').length;
             var name = $(this).parents('.add-ctrlbox').attr('data-modspace');
+            var JSONname = name.split('-')[1]+'s';
+
             if(num > 1){
 
                 $('.J-'+ name +':[data-index='+ (index+1) +']').remove();
 
                 $thisBox.find('.itm:last').remove();
+                nums[JSONname] = num-1;
+                $('#numOfBlocks').attr('value',JSON.stringify(nums));
                 if($thisBox.find('.itm:last').index('.itm') > 0){
                     $thisBox.find('.itm:last').append('<i class="J-del">X</i>');
                 }
