@@ -33,6 +33,7 @@ $(function () {
                     }
                 })
             },
+            okValue: '确定',
             cancelValue: '取消',
             cancel: function () {}
         });
@@ -44,36 +45,44 @@ $(function () {
         .on('click', '.J-modify', function () {
             var d = dialog({
                 title: '欢迎',
-                content: '欢迎使用 artDialog 对话框组件！',
+                content: '<div class="c">还没做！</div>',
                 ok: function () {
 
                 }
             });
-            d.show();
+            d.width(300).show();
             return false;
         })
         .on('click', '.J-delet', function () {
-            if (confirm('Are you sure?')) {
                 var _this = $(this)
                 var userName = _this.parents('.user-card').find('.J-user-name').text();
-                console.log(userName)
-                $.ajax({
-                    type: 'post',
-                    url: './del-user',
-                    data: {
-                        userName: userName
+
+                var d = dialog({
+                    title: '删除用户',
+                    content: '<div class="c">确定删除 <b>' + userName + '</b>？</div>',
+                    ok: function () {
+                        $.ajax({
+                            type: 'post',
+                            url: './del-user',
+                            data: {
+                                userName: userName
+                            },
+                            success: function(msg) {
+                                console.log('good')
+                                console.log(msg)
+                                _this.parents('.user-card').remove()
+                            },
+                            error: function(err) {
+                                console.log('ouch')
+                            }
+                        })
                     },
-                    success: function(msg) {
-                        console.log('good')
-                        console.log(msg)
-                        _this.parents('.user-card').remove()
-                    },
-                    error: function(err) {
-                        console.log('ouch')
-                    }
-                })
-            }
-                
-            return false;
+                    okValue: '确定',
+                    cancelValue: '取消',
+                    cancel: function () {}
+                });
+                d.width(300).show();
+                return false;
+
         })
 })
