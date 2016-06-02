@@ -1,24 +1,6 @@
 $(function () {
 
-
-    function page(n) {
-
-    }
     $(document)
-        .on('click', '.J-modify', function () {
-            // var d = dialog({
-            //     title: '欢迎',
-            //     content: '欢迎使用 artDialog 对话框组件！'
-            // });
-            // d.show();
-            // return false;
-
-
-            var _this = $(this);
-            var _id = _this.parents('tr').data('id');
-            var url = '/modify-mail?_id=' + _id;
-            window.location.href= url;
-        })
         .on('click', '.J-delete', function() {
             if (confirm('Are you sure?')) {
                 var _this = $(this);
@@ -54,10 +36,10 @@ $(function () {
                 success: function(mail) {
                     console.log('ajax good')
                     var d = dialog({
-                        title: '欢迎',
+                        title: '邮件版 HTML',
                         content: $('<div/>').text(mail.mailHtml).html()
                     });
-                    d.show();
+                    d.width(600).show();
                 }
             })
             return false;
@@ -74,16 +56,15 @@ $(function () {
                 success: function(mail) {
                     console.log('ajax good')
                     var d = dialog({
-                        title: '欢迎',
+                        title: '网页版 HTML',
                         content: $('<div/>').text(mail.webHtml).html()
                     });
-                    d.show();
+                    d.width(600).show();
                 }
             })
             return false;
         })
         .on('click', '.J-preview', function(){
-
             var _this = $(this);
             var _id = _this.parents('tr').data('id');
             $.ajax({
