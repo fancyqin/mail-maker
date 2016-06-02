@@ -215,16 +215,17 @@
                 });
 
                 $addCtrlbox.on('click','.J-del',function(){
-                    var index = $(this).parent().index('.itm');
-                    var num = $addCtrlbox.find('.itm').length;
+                    var $thisBox = $(this).closest('.add-ctrlbox');
+                    var index = $(this).parent().index();
+                    var num = $thisBox.find('.itm').length;
                     var name = $(this).parents('.add-ctrlbox').attr('data-modspace');
                     if(num > 1){
 
                         $('.J-'+ name +':[data-index='+ (index+1) +']').remove();
 
-                        $addCtrlbox.find('.itm:last').remove();
-                        if($addCtrlbox.find('.itm:last').index('.itm') > 0){
-                            $addCtrlbox.find('.itm:last').append('<i class="J-del">X</i>');
+                        $thisBox.find('.itm:last').remove();
+                        if($thisBox.find('.itm:last').index('.itm') > 0){
+                            $thisBox.find('.itm:last').append('<i class="J-del">X</i>');
                         }
                     }
 
