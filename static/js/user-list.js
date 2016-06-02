@@ -1,8 +1,47 @@
 $(function () {
-    var addUserHtml = '<tr><td><input type="text" name="J-name" id="J-name"></td><td><input type="checkbox" name="J-isAdmin" id="J-isAdmin"></td><td><a href="#" class="J-submit">确定</a> <a href="#" class="J-cancle">取消</a></td></tr>';
+    // var addUserHtml = '<tr><td><input type="text" name="J-name" id="J-name"></td><td><input type="checkbox" name="J-isAdmin" id="J-isAdmin"></td><td><a href="#" class="J-submit">确定</a> <a href="#" class="J-cancle">取消</a></td></tr>';
 
     $('.J-add-user').on('click', function () {
-        $('.J-user-list tr:last').before(addUserHtml);
+        // $('.J-user-list tr:last').before(addUserHtml);
+
+                var _this = $(this);
+        var d = dialog({
+            title: '添加用户',
+            okValue: '确定',
+            content: '<input class="input-text" type="text" id="J-name" placeholder="Name" /> <br /><label><input type="checkbox" name="J-isAdmin" id="J-isAdmin"> 管理员</label>',
+            ok: function () {
+                var userName = $('#J-name').val();
+                var isAdmin = $('#J-isAdmin')[0].checked;
+                console.log(userName + isAdmin)
+                var html = '<div class="user-card"><div class="name">' + userName + '</div><div class="info-act"><span class="is-admin">' + (isAdmin ? '管理员' : '') + '</span><span class="act"><a href="#" class="J-modify">修改</a> <span class="gap-line">|</span> <a href="#" class="J-delet" data-id="<%= userList[i]._id%>">删除</a></span></div></div>'
+                $.ajax({
+                    type: 'post',
+                    url: './add-user',
+                    data: {
+                        userName: userName,
+                        isAdmin: isAdmin
+                    },
+                    success: function(msg) {
+                        console.log('ajax success');
+                        console.log(msg);
+                        if (msg) {
+                            alert('User exsist!')
+                            console.log(1111111)
+                        } else {
+                            _this.parents('.user-card').before(html);
+                            console.log(2222222)
+                        }
+                    },
+                    error: function(err) {
+                        console.log('ajax error');
+                        console.log(err.responseText);
+                    }
+                })
+            },
+            cancelValue: '取消',
+            cancel: function () {}
+        });
+        d.show();
         return false;
     })
     
@@ -18,7 +57,7 @@ $(function () {
         .on('click', '.J-delet', function () {
             if (confirm('Are you sure?')) {
                 var _this = $(this)
-                var userName = _this.parents('tr').find('.J-user-name').text();
+                var userName = _this.parents('.user-card').find('.J-user-name').text();
                 console.log(userName)
                 $.ajax({
                     type: 'post',
@@ -29,7 +68,7 @@ $(function () {
                     success: function(msg) {
                         console.log('good')
                         console.log(msg)
-                        _this.parents('tr').remove()
+                        _this.parents('.user-card').remove()
                     },
                     error: function(err) {
                         console.log('ouch')
