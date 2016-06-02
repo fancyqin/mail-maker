@@ -2,63 +2,23 @@
 <div class="main">
     <div class="main-block">
         <div class="main-block-title">User List</div>
-        <!-- page: <%= page %> -->
-<!--         <table class="J-user-list list-table">
-            <colgroup>
-                <col width="30%">
-                <col width="30%">
-            </colgroup>
-            <tr>
-                <th>用户</th>
-                <th>管理员</th>
-                <th>操作</th>
-            </tr>
-            
-            
-            <% for (var i=0; i<userList.length; i++) {%>   
-            
-            <tr>
-                <td class="J-user-name"><%= userList[i].name %></td>
-                <td><% if(userList[i].isAdmin) { %> 是 <% } else { %> 否 <% } %></td>
-                <td>
-                    <a href="#" class="J-modify">修改</a>
-                    <span class="gap-line">|</span>
-                    <a href="#" class="J-delet" data-id="<%= userList[i]._id%>">删除</a>
-                </td>
-            </tr>
-            
-            <% } %>
-            <tr>
-                <td colspan="3"><a href="#" class="J-add-user">添加用户</a></td>
-            </tr>
-        </table> -->
-
-
         <div class="user-list cf">
             <% for (var i=0; i<userList.length; i++) {%>
-
-                
-                    <div class="user-card">
-                        <div class="name J-user-name"><%= userList[i].name %></div>
-                        <div class="info-act">
-                            <span class="is-admin"><% if(userList[i].isAdmin) { %> 管理员 <% } %></span>
-                            <span class="act">
-                                <a href="#" class="J-modify">修改</a>
-                                <span class="gap-line">|</span>
-                                <a href="#" class="J-delet" data-id="<%= userList[i]._id%>">删除</a>
-                            </span>
-                        </div>
+                <div class="user-card">
+                    <div class="name J-user-name"><%= userList[i].name %></div>
+                    <div class="info-act">
+                        <span class="is-admin"><% if(userList[i].isAdmin) { %> 管理员 <% } %></span>
+                        <span class="act">
+                            <a href="javascript:" class="J-modify">修改</a>
+                            <span class="gap-line">|</span>
+                            <a href="javascript:" class="J-delet" data-id="<%= userList[i]._id%>">删除</a>
+                        </span>
                     </div>
-
-
+                </div>
             <% } %>
-            <div class="user-card add-user"><a href="#" class="J-add-user">+</a></div>
+            <div class="user-card add-user"><a href="javascript:" class="J-add-user">+</a></div>
         </div>
-
     </div>
-    
 </div>
-
 <script src="js/user-list.js"></script>
-    
 <% include common/footer %>

@@ -73,17 +73,21 @@ img {
     .main-block {
         background: #fff;
         padding: 40px 20px;
-        border-radius: 3px;
-        box-shadow: 1px 1px 5px rgba(0,0,0,.2);
+        // border-radius: 3px;
+        // box-shadow: 1px 1px 5px rgba(0,0,0,.2);
+        // border: 1px solid #e6e6e6;
         .main-block-title {
             margin: -40px -20px 20px;
-            background: #5d9cec;
-            color: #fff;
+            // background: #5d9cec;
+            background: #fafafa;
+            // color: #fff;
             height: 40px;
             line-height: 40px;
             padding: 0 20px;
             font-size: 16px;
             border-radius: 3px 3px 0 0;
+            border-bottom: 1px solid #e6e6e6;
+            font-weight: bold;
         }
     }
     a {

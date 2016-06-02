@@ -9,8 +9,10 @@
     height:100%;
     //display: table;
     width:100%;
-    border-radius: 3px;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    // border-radius: 3px;
+    // box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    // border: 1px solid #e6e6e6;
+    background: #fff;
     .demo-sider {
         position: absolute;
         top:0;
@@ -18,9 +20,9 @@
         height: 100%;
         vertical-align: top;
         width: 400px;
-        margin-right: -1px;
-        border-right: 1px solid #ccc;
-        background: #F4EAD5;
+        // margin-right: -1px;
+        // border-right: 1px solid #ccc;
+        // background: #F4EAD5;
         .ctrl-box {
             //background: #ebebeb;
             width: 360px;
@@ -40,7 +42,7 @@
         height: 100%;
         vertical-align: top;
         overflow: hidden;
-        background: #ebebeb;
+        // background: #ebebeb;
         .demo-fixed{
             overflow-x: auto;
         }
@@ -100,15 +102,15 @@
             float: left;
             height:24px;
             line-height:24px;
-            border: 1px solid #9E7C72;
+            border: 1px solid #333;
             padding: 0 10px;
             margin-right: -1px;
             text-transform: uppercase;
             cursor: pointer;
-            color: #9E7C72;
+            color: #333;
             &.on{
-                background: #9E7C72;
-                color: #F4EAD5;
+                background: #333;
+                color: #fff;
 
             }
         }
