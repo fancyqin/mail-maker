@@ -37,7 +37,7 @@ $(function () {
                     console.log('ajax good')
                     var d = dialog({
                         title: '邮件版 HTML',
-                        content: $('<div/>').text(mail.mailHtml).html()
+                        content: $('<textarea/>').text(mail.mailHtml)
                     });
                     d.width(600).show();
                 }
@@ -57,7 +57,7 @@ $(function () {
                     console.log('ajax good')
                     var d = dialog({
                         title: '网页版 HTML',
-                        content: $('<div/>').text(mail.webHtml).html()
+                        content: $('<textarea/>').text(mail.webHtml)
                     });
                     d.width(600).show();
                 }
@@ -74,16 +74,28 @@ $(function () {
                     _id: _id
                 },
                 success: function(mail) {
-                    console.log('ajax good')
-                    var d = dialog({
-                        title: '欢迎',
-                        content: mail.mailHtml
-                    });
-                    d.show();
+                    console.log('ajax good');
+
+
+                    var priew = window.open('', '');
+                    if (priew){
+                        priew.document.write(mail.mailHtml);
+                    }else {
+                        var d = dialog({
+                            title: '欢迎',
+                            content: mail.mailHtml
+                        });
+                        d.show();
+                    }
+
                 }
             })
             return false;
         })
+
+
+
+
 })
 
 

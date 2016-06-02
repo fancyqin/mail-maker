@@ -120,7 +120,7 @@ $(function () {
         var upload = place.find('.J-imgUpload');
         var idn = place.attr('id');
         var nidn = 'UploadIMG'+ idn;
-        console.log(nidn)
+        //console.log(nidn)
         upload.attr('id',nidn);
         uploadIMG(nidn,place,box);
 
@@ -307,7 +307,7 @@ $(function () {
         var mailTitle = $('#mailTitle').val();
         var mailTable = $('#tableInner').html().trim().replace(/\s+|\n/g, " ").replace(/>\s</g, "><");
         var htmlCode = gethtmlCode(mailTable);
-        
+
         if (mailTitle === '') {
             alert('邮件主题不能为空')
         }
