@@ -630,5 +630,18 @@ $(function () {
     })
 
 
+    function obDOMchange (){
+        var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver
+        var obtarget = document.querySelector('#tableInner');
+        var observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                console.log(mutation.type);
+                isSaved = false;
+            });
+        });
+        var config = { attributes: true, childList: true, characterData: true ,subtree: true}
+        observer.observe(obtarget, config);
+    }
+
 
 });
