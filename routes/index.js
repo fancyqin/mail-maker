@@ -7,6 +7,26 @@ var http = require('http');
 var q = require('q');
 var sizeOf = require('image-size');
 
+var app = require('koa')()
+
+
+router.get('/session', function * (next) {
+  var _this = this;
+  var session = require('koa-session');
+  app.keys = ['some secret hurr'];
+  app.use(session(app));
+  app.use(function *() {
+    if (_this.path === '/favicon.ico') return;
+
+    var n = _this.session.views || 0;
+    _this.session.views = ++n;
+    _this.body = n + ' views';
+  })
+  this.body ='test'
+})
+
+
+
 router.get('/', function *(next) {
     yield this.render('login', {
         title: 'Hello World Koa!',
@@ -170,8 +190,6 @@ router.post('/modify-mail', function *(next) {
             if (err) throw err;
             console.log('update success')
         })
-
-
         _this.body = 'update success'
     })
 })
@@ -207,21 +225,6 @@ router.post('/find-mail', function *(next) {
         _this.body = mail;
     })
 })
-
-// router.post('/add-mail', function *(next) {
-//     var title       = this.request.body.title,
-//         description = this.request.body.description,
-//         author      = this.request.body.author,
-//         addData     = this.request.body.addData,
-//         updater     = this.request.body.updater,
-//         updateDate  = this.request.body.updateDate,
-//         mailHtml    = this.request.body.mailHtml,
-//         webHtml     = this.request.body.webHtml;
-// })
-
-
-
-
 
 router.get('/user-list', function *(next) {
     yield this.render('user-list', {
@@ -271,13 +274,6 @@ router.post('/del-user', function *(next) {
     })
     this.body = 'User: ' + userName + ' deleted'
 });
-
-
-
-
-
-
-
 
 
 router.get('/choose-demo', function *(next) {

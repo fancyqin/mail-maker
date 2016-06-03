@@ -7,8 +7,8 @@ var app = require('koa')()
 
 var index = require('./routes/index');
 // var users = require('./routes/users');
-var login = require('./routes/login');
-var mailList = require('./routes/mail-list');
+// var login = require('./routes/login');
+// var mailList = require('./routes/mail-list');
 
 // global middlewares
 app.use(views('views', {
@@ -43,22 +43,10 @@ koa.use(index.routes(), index.allowedMethods());
 
 
 
-//moment().format();
-
 
 
 // mount root routes  
 app.use(koa.routes());
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -80,7 +68,6 @@ var sizeOf = require('image-size');
 
 // app.use(router.get('/upload',upload));
 // app.use(router.get('/checkImg',checkImg));
-
 
 
 
