@@ -331,7 +331,54 @@ function getImgInfo(options,cb){
     });
 }
 
+//var request = require('request');
+//var cheerio = require('cheerio');
+//var fs = require('fs');
 
-
+//var j = request.jar();
+//var formData = {
+//    mailTypeCode: 'SJY',
+//    month: 1,
+//    file: fs.createReadStream(__dirname + '/logo.png')
+//};
+//
+//request.post({
+//    url:'http://edm.focuschina.com/design/index',
+//    //formData: formData,
+//    jar:j
+//}, function optionalCallback(err, httpResponse, body) {
+//    if (err) {
+//        return console.error('upload failed:', err);
+//    }
+//    var $ = cheerio.load(body);
+//
+//    if ($('body').html() === ''){
+//        console.log('Upload successful!',body);
+//        cb();
+//    }else {
+//        console.log('上传失败，请联系管理员更换cookie',body);
+//        return 'error';
+//    }
+//});
+//
+//
+//function JudgeEDMsystemLogin(){
+//    //var cookiejar = new tough.CookieJar();
+//    //cookiejar.getCookies('http://edm.focuschina.com/request/search',function(err,cookies) {
+//    //    if (err) console.log(err);
+//    //
+//    //    console.log(cookies);
+//    //
+//    //});
+//    http.get('http://edm.focuschina.com/request/search',function(res){
+//        var thisURL = res.headers.location;
+//        if(thisURL && /loginIndex/.test(thisURL)){
+//            console.log(1);
+//        }else{
+//            console.log(2);
+//        }
+//    })
+//}
+//JudgeEDMsystemLogin();
 
 module.exports = router;
