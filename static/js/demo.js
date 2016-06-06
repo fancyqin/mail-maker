@@ -642,6 +642,7 @@ $(function () {
         var config = { attributes: true, childList: true, characterData: true ,subtree: true}
         observer.observe(obtarget, config);
     }
+    obDOMchange();
 
 
 });
