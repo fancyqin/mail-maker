@@ -9,20 +9,13 @@ var sizeOf = require('image-size');
 
 var app = require('koa')()
 
+var session = require('koa-session');
+
+app.keys = ['secret'];
 
 router.get('/session', function * (next) {
-  var _this = this;
-  var session = require('koa-session');
-  app.keys = ['some secret hurr'];
-  app.use(session(app));
-  app.use(function *() {
-    if (_this.path === '/favicon.ico') return;
-
-    var n = _this.session.views || 0;
-    _this.session.views = ++n;
-    _this.body = n + ' views';
-  })
-  this.body ='test'
+    var v = this.session.value || 'Not Found';
+    this.body = 'You value is ' + v;
 })
 
 
