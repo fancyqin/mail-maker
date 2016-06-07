@@ -445,13 +445,13 @@ $(function () {
     }
 
 
-        window.onbeforeunload = function (e) {
-            if(!isSaved){
-                var msg = '您正准备离开此页，您未保存的编辑数据将会丢失！！！！慎重啊，小主~';
-                e.returnValue = msg;
-                return msg;
-            }
-        };
+    window.onbeforeunload = function (e) {
+        if(!isSaved){
+            var msg = '您正准备离开此页，您未保存的编辑数据将会丢失！！！！慎重啊，小主~';
+            e.returnValue = msg;
+            return msg;
+        }
+    };
 
 
 
@@ -635,7 +635,7 @@ $(function () {
         var obtarget = document.querySelector('#tableInner');
         var observer = new MutationObserver(function(mutations) {
             mutations.forEach(function(mutation) {
-                console.log(mutation.type);
+                console.log(mutation);
                 isSaved = false;
             });
         });

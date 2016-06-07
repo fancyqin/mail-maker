@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "db": "mongod --dbpath F:/mongodb/data/db",
     "start": "node ./bin/www"
   },
   "dependencies": {
