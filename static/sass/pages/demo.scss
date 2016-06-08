@@ -327,3 +327,12 @@
 }
 .FOCUS_UPLOAD_wrap_disabled{background-color:#ccc; cursor:default;}
 .FOCUS_UPLOAD_wrap_disabled .FOCUS_UPLOAD_text{color:#999;}
+
+
+.rich-edit-box{
+    position: absolute;
+    height: 30px;
+    width: 200px;
+    background: rgba(0,0,0,.7);
+    border-radius: 4px;
+}

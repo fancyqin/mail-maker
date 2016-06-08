@@ -69,15 +69,18 @@ $(function () {
     function newEditor (box,place){
         var richTpl = $("#richTxtPlaceTpl").html();
         var tplPlace = template(richTpl);
-        place.append(tplPlace);
+        var rB = '.J-richBox';
 
         var txt = box.html().trim();
         var styles = box.attr('data-styles');
 
-        place.find('.rich-box').html(txt);
+        var isSelecting;
+
+        place.append(tplPlace);
+        place.find(rB).html(txt);
 
 
-        place.on('focus','.rich-box',function(e){
+        place.on('focus',rB,function(e){
             var _this = $(this);
             e.stopPropagation();
             _this.bind('keyup',function(e){
@@ -88,12 +91,44 @@ $(function () {
                     console.log('enter')
                 }
             })
-        }).on('blur','.rich-box',function(){
+        }).on('blur',rB,function(){
             var _this = $(this);
             _this.unbind('keyup');
             var inner = _this.html().trim();
             box.html('').html(inner);
+        });
+        var beginX,beginY,thisW,thisH;
+        $(rB).on('mousedown',function(e){
+            isSelecting = true;
+            console.log(isSelecting,e);
+            beginX = e.pageX;
+            beginY = e.pageY;
+        }).on('mouseup',function(e){
+            isSelecting = false;
+
+            var selection = window.getSelection();
+            var selectionInner = selection.toString();
+            var range = selection.rangeCount && selection.getRangeAt(0)
+
+            if(beginX && beginY){
+                var centerX = (beginX + e.clientX)/2;
+            }
+            if (selectionInner && centerX){
+                var $richB = $('.J-rich-edit-box');
+                $richB.show();
+                thisW = $richB.width();
+                thisH = $richB.height();
+                $richB.css({
+                    left: (centerX - thisW/2) +'px',
+                    top: (beginY-thisH - 20) +'px'
+                })
+            }
+            //https://developer.mozilla.org/zh-CN/docs/Web/API/Range
+            //range.deleteContents();  //del
+
+            console.log(isSelecting,selectionInner,range,e);
         })
+
 
     }
 
