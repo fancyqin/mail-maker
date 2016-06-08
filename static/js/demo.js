@@ -22,8 +22,9 @@ $(function () {
                             newTxt(box, place);
                             break;
                         case 'richTxt':
-                            var EditorId = thisName + '-edit';
-                            newEditor(box, EditorId);
+                            //var EditorId = thisName + '-edit';
+                            //newEditor(box, EditorId);
+                            newEditor(box, place);
                             break;
                         case 'btn':
                             newBtn(box, place);
@@ -37,33 +38,99 @@ $(function () {
 
     //富文本
 
-    function newEditor(box, placeholderID) {
-        var settings = {
-            toolbars: [
-                [   'undo','redo','|','bold', 'italic',  'underline',  'forecolor', '|', 'cleardoc',    '|','link',  '|', 'justifyleft', 'justifyright',  'justifycenter', '|', 'unlink'],
-                ['source', 'fontfamily', 'fontsize' ,'addbr']
-            ]
-            ,wordCount:false
-        };
-        var ue = UE.getEditor(placeholderID, settings);
-        var text = box.html().trim();
-        var pID = placeholderID.substring(0,(placeholderID.length - 5));
-        $('#'+pID).append('<div class="J-ph">加载中...</div>');
-        text = text.replace(/\s+|\n/g, " ").replace(/>\s</g, "><");
-        ue.ready(function(){
-            $('#'+pID).find('.J-ph').hide();
-            ue.setContent(text);
-            ue.addListener('contentChange', function (ue) {
-                var inner = this.getContent();
-                box.html(inner);
-                var $links = box.find('a');
-                if ($links) {
-                    $links.css({color: '#246bb3', textDecoration: 'none'})
+    //function newEditor(box, placeholderID) {
+    //    var settings = {
+    //        toolbars: [
+    //            [   'undo','redo','|','bold', 'italic',  'underline',  'forecolor', '|', 'cleardoc',    '|','link',  '|', 'justifyleft', 'justifyright',  'justifycenter', '|', 'unlink'],
+    //            ['source', 'fontfamily', 'fontsize' ,'addbr']
+    //        ]
+    //        ,wordCount:false
+    //    };
+    //    var ue = UE.getEditor(placeholderID, settings);
+    //    var text = box.html().trim();
+    //    var pID = placeholderID.substring(0,(placeholderID.length - 5));
+    //    $('#'+pID).append('<div class="J-ph">加载中...</div>');
+    //    text = text.replace(/\s+|\n/g, " ").replace(/>\s</g, "><");
+    //    ue.ready(function(){
+    //        $('#'+pID).find('.J-ph').hide();
+    //        ue.setContent(text);
+    //        ue.addListener('contentChange', function (ue) {
+    //            var inner = this.getContent();
+    //            box.html(inner);
+    //            var $links = box.find('a');
+    //            if ($links) {
+    //                $links.css({color: '#246bb3', textDecoration: 'none'})
+    //            }
+    //        })
+    //    })
+    //}
+
+
+    function newEditor (box,place){
+        var richTpl = $("#richTxtPlaceTpl").html();
+        var tplPlace = template(richTpl);
+        var rB = '.J-richBox';
+
+        var txt = box.html().trim();
+        var styles = box.attr('data-styles');
+
+        var isSelecting;
+
+        place.append(tplPlace);
+        place.find(rB).html(txt);
+
+
+        place.on('focus',rB,function(e){
+            var _this = $(this);
+            e.stopPropagation();
+            _this.bind('keyup',function(e){
+                e.stopPropagation();
+                e.preventDefault();
+                if (e.which === 13){
+
+                    console.log('enter')
                 }
             })
-        })
-    }
+        }).on('blur',rB,function(){
+            var _this = $(this);
+            _this.unbind('keyup');
+            var inner = _this.html().trim();
+            box.html('').html(inner);
+        });
+        var beginX,beginY,thisW,thisH;
+        $(rB).on('mousedown',function(e){
+            isSelecting = true;
+            console.log(isSelecting,e);
+            beginX = e.pageX;
+            beginY = e.pageY;
+        }).on('mouseup',function(e){
+            isSelecting = false;
 
+            var selection = window.getSelection();
+            var selectionInner = selection.toString();
+            var range = selection.rangeCount && selection.getRangeAt(0)
+
+            if(beginX && beginY){
+                var centerX = (beginX + e.clientX)/2;
+            }
+            if (selectionInner && centerX){
+                var $richB = $('.J-rich-edit-box');
+                $richB.show();
+                thisW = $richB.width();
+                thisH = $richB.height();
+                $richB.css({
+                    left: (centerX - thisW/2) +'px',
+                    top: (beginY-thisH - 20) +'px'
+                })
+            }
+            //https://developer.mozilla.org/zh-CN/docs/Web/API/Range
+            //range.deleteContents();  //del
+
+            console.log(isSelecting,selectionInner,range,e);
+        })
+
+
+    }
 
     //图片
 
@@ -635,7 +702,7 @@ $(function () {
         var obtarget = document.querySelector('#tableInner');
         var observer = new MutationObserver(function(mutations) {
             mutations.forEach(function(mutation) {
-                console.log(mutation);
+                //console.log(mutation);
                 isSaved = false;
             });
         });
