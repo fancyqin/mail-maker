@@ -71,7 +71,7 @@ $(function () {
         var tplPlace = template(richTpl);
         var rB = '.J-richBox';
 
-        var txt = box.html().trim();
+        var txt = box.html().trim().replace(/\s+|\n/g, " ").replace(/>\s</g, "><");
         var styles = box.attr('data-styles');
 
         var isSelecting;
@@ -100,7 +100,7 @@ $(function () {
         var beginX,beginY,thisW,thisH;
         $(rB).on('mousedown',function(e){
             isSelecting = true;
-            console.log(isSelecting,e);
+            // console.log(isSelecting,e);
             beginX = e.pageX;
             beginY = e.pageY;
         }).on('mouseup',function(e){
@@ -108,7 +108,11 @@ $(function () {
 
             var selection = window.getSelection();
             var selectionInner = selection.toString();
-            var range = selection.rangeCount && selection.getRangeAt(0)
+            var range = selection.rangeCount && selection.getRangeAt(0);
+            // var rangeText =  document.createRange();
+
+            console.log(range);
+
 
             if(beginX && beginY){
                 var centerX = (beginX + e.clientX)/2;
@@ -126,7 +130,7 @@ $(function () {
             //https://developer.mozilla.org/zh-CN/docs/Web/API/Range
             //range.deleteContents();  //del
 
-            console.log(isSelecting,selectionInner,range,e);
+            // console.log(isSelecting,selectionInner,range,e);
         })
 
 
@@ -444,8 +448,8 @@ $(function () {
             var webCode = $('#webCode').html();
             var webCodeHtml = gethtmlCode(webCode);
 
-            var date = new Date();
-            var formatDate = (date.getFullYear() + '.' + date.getMonth() + '.' + date.getDate()).toString();
+            // var date = new Date();
+            // var formatDate = (date.getFullYear() + '.' + date.getMonth() + '.' + date.getDate()).toString();
 
             var mail = {
                 _id: $("#J-mail-id").val(),
