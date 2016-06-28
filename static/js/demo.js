@@ -37,34 +37,34 @@ $(function () {
 
 
     //富文本
-
-    //function newEditor(box, placeholderID) {
-    //    var settings = {
-    //        toolbars: [
-    //            [   'undo','redo','|','bold', 'italic',  'underline',  'forecolor', '|', 'cleardoc',    '|','link',  '|', 'justifyleft', 'justifyright',  'justifycenter', '|', 'unlink'],
-    //            ['source', 'fontfamily', 'fontsize' ,'addbr']
-    //        ]
-    //        ,wordCount:false
-    //    };
-    //    var ue = UE.getEditor(placeholderID, settings);
-    //    var text = box.html().trim();
-    //    var pID = placeholderID.substring(0,(placeholderID.length - 5));
-    //    $('#'+pID).append('<div class="J-ph">加载中...</div>');
-    //    text = text.replace(/\s+|\n/g, " ").replace(/>\s</g, "><");
-    //    ue.ready(function(){
-    //        $('#'+pID).find('.J-ph').hide();
-    //        ue.setContent(text);
-    //        ue.addListener('contentChange', function (ue) {
-    //            var inner = this.getContent();
-    //            box.html(inner);
-    //            var $links = box.find('a');
-    //            if ($links) {
-    //                $links.css({color: '#246bb3', textDecoration: 'none'})
-    //            }
-    //        })
-    //    })
-    //}
-
+    /*
+    function newEditor(box, placeholderID) {
+        var settings = {
+            toolbars: [
+                [   'undo','redo','|','bold', 'italic',  'underline',  'forecolor', '|', 'cleardoc',    '|','link',  '|', 'justifyleft', 'justifyright',  'justifycenter', '|', 'unlink'],
+                ['source', 'fontfamily', 'fontsize' ,'addbr']
+            ]
+            ,wordCount:false
+        };
+        var ue = UE.getEditor(placeholderID, settings);
+        var text = box.html().trim();
+        var pID = placeholderID.substring(0,(placeholderID.length - 5));
+        $('#'+pID).append('<div class="J-ph">加载中...</div>');
+        text = text.replace(/\s+|\n/g, " ").replace(/>\s</g, "><");
+        ue.ready(function(){
+            $('#'+pID).find('.J-ph').hide();
+            ue.setContent(text);
+            ue.addListener('contentChange', function (ue) {
+                var inner = this.getContent();
+                box.html(inner);
+                var $links = box.find('a');
+                if ($links) {
+                    $links.css({color: '#246bb3', textDecoration: 'none'})
+                }
+            })
+        })
+    }
+    */
 
     function newEditor (box,place){
         var richTpl = $("#richTxtPlaceTpl").html();
@@ -83,6 +83,7 @@ $(function () {
         place.on('focus',rB,function(e){
             var _this = $(this);
             e.stopPropagation();
+            e.preventDefault();
             _this.bind('keyup',function(e){
                 e.stopPropagation();
                 e.preventDefault();
@@ -92,25 +93,29 @@ $(function () {
                 }
             })
         }).on('blur',rB,function(){
+
             var _this = $(this);
             _this.unbind('keyup');
             var inner = _this.html().trim();
             box.html('').html(inner);
+            //$('.J-rich-edit-box') && $('.J-rich-edit-box').hide()
         });
         var beginX,beginY,thisW,thisH;
+        /*
         $(rB).on('mousedown',function(e){
+            e.stopPropagation();
             isSelecting = true;
             // console.log(isSelecting,e);
             beginX = e.pageX;
             beginY = e.pageY;
         }).on('mouseup',function(e){
             isSelecting = false;
-
+            e.stopPropagation();
             var selection = window.getSelection();
             var selectionInner = selection.toString();
             var range = selection.rangeCount && selection.getRangeAt(0);
             // var rangeText =  document.createRange();
-
+            var $richB = $('.J-rich-edit-box');
             console.log(range);
 
 
@@ -118,7 +123,7 @@ $(function () {
                 var centerX = (beginX + e.clientX)/2;
             }
             if (selectionInner && centerX){
-                var $richB = $('.J-rich-edit-box');
+
                 $richB.show();
                 thisW = $richB.width();
                 thisH = $richB.height();
@@ -126,12 +131,17 @@ $(function () {
                     left: (centerX - thisW/2) +'px',
                     top: (beginY-thisH - 20) +'px'
                 })
+            }else {
+                $richB.hide()
             }
             //https://developer.mozilla.org/zh-CN/docs/Web/API/Range
             //range.deleteContents();  //del
 
             // console.log(isSelecting,selectionInner,range,e);
         })
+         */
+
+        var editor = new MediumEditor(rB);
 
 
     }

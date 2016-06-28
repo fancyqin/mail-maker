@@ -1,5 +1,6 @@
 @import "../lib/_reset.scss";
 @import "../lib/_layout.scss";
+@import "_medium-editor.min.scss";
 .wrap {
 
 }
@@ -335,4 +336,10 @@
     width: 200px;
     background: rgba(0,0,0,.7);
     border-radius: 4px;
+    z-index: 100;
+    button{
+        width: 24px;
+        height: 24px;
+        margin: 2px;
+    }
 }
