@@ -141,7 +141,8 @@ $(function () {
         })
          */
 
-        var editor = new MediumEditor(rB,{
+
+        var conf = {
             toolbar:{
                 allowMultiParagraphSelection: false,
                 buttons:['bold','italic','underline','anchor']
@@ -152,7 +153,8 @@ $(function () {
                 cleanReplacements:[],
                 cleanTags:['meta','div','ul','ol','hr','h1','h2','h3','h4','h5','h6','img']
             }
-        })
+        };
+        var editor = new MediumEditor(rB,conf);
 
     }
 
