@@ -74,7 +74,7 @@ $(function () {
         var txt = box.html().trim().replace(/\s+|\n/g, " ").replace(/>\s</g, "><");
         var styles = box.attr('data-styles');
 
-        var isSelecting;
+
 
         place.append(tplPlace);
         place.find(rB).html(txt);
@@ -88,7 +88,6 @@ $(function () {
                 e.stopPropagation();
                 e.preventDefault();
                 if (e.which === 13){
-
                     console.log('enter')
                 }
             })
@@ -96,12 +95,31 @@ $(function () {
 
             var _this = $(this);
             _this.unbind('keyup');
-            var inner = _this.html().trim();
+            var innerHTML = _this.html().trim();
+            var inner = innerHTML.replace(/\s+|\n/g, " ").replace(/<p><br><\/p>/g, "<p></p>");
             box.html('').html(inner);
             //$('.J-rich-edit-box') && $('.J-rich-edit-box').hide()
+            box.find('p').attr('style',styles);
+            box.find('a').attr('style','color:#337ab7;text-decoration: none;')
         });
-        var beginX,beginY,thisW,thisH;
+
+
+        var conf = {
+            toolbar:{
+                allowMultiParagraphSelection: false,
+                buttons:['bold','italic','underline','anchor']
+            },
+            paste:{
+                forcePlainText: true
+            }
+        };
+        var editor = new MediumEditor(rB,conf);
+
+
+
         /*
+        var beginX,beginY,thisW;
+
         $(rB).on('mousedown',function(e){
             e.stopPropagation();
             isSelecting = true;
@@ -140,21 +158,6 @@ $(function () {
             // console.log(isSelecting,selectionInner,range,e);
         })
          */
-
-
-        var conf = {
-            toolbar:{
-                allowMultiParagraphSelection: false,
-                buttons:['bold','italic','underline','anchor']
-            },
-            paste:{
-                forcePlainText: true,
-                cleanPastedHTML: true,
-                cleanReplacements:[],
-                cleanTags:['meta','div','ul','ol','hr','h1','h2','h3','h4','h5','h6','img']
-            }
-        };
-        var editor = new MediumEditor(rB,conf);
 
     }
 
@@ -398,7 +401,12 @@ $(function () {
     });
     $('#exportMail').click(function () {
         var mailTitle = $('#mailTitle').val();
-        var mailTable = $('#tableInner').html().trim().replace(/\s+|\n/g, " ").replace(/>\s</g, "><");
+        var mailHTML = $('#tableInner').html().trim().replace(/\s+|\n/g, " ").replace(/>\s</g, "><");
+
+
+        var mailTable = mailHTML.replace(/<div(.*?)>/g,"").replace(/<\/div>/g,"").replace(/<input(.*?)>/g,"");
+
+
         var htmlCode = gethtmlCode(mailTable);
 
         if (mailTitle === '') {
@@ -583,7 +591,8 @@ $(function () {
 
             }
         }
-        var webCode = $('#webCode').html();
+        var webCodeHTML = $('#webCode').html();
+        var webCode =  webCodeHTML.replace().replace(/<div(.*?)>/g,"").replace(/<\/div>/g,"").replace(/<input(.*?)>/g,"");
         var webCodeHtml = gethtmlCode(webCode);
         $('#codeCopy').val(webCodeHtml);
         codePop.show();

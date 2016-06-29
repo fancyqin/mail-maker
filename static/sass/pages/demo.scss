@@ -96,6 +96,7 @@
             color: #666;
             font-weight: normal;
         }
+
     }
     .error{
         border-color: #f00 !important;
@@ -184,6 +185,11 @@
         left: -400px;
         transition: all .5s;
         opacity: 0;
+        .upload-tips{
+            margin: 10px 0 20px;
+            color: #f60;
+            line-height: 1.7;
+        }
     }
     .open{
         left: 0;
