@@ -141,8 +141,18 @@ $(function () {
         })
          */
 
-        var editor = new MediumEditor(rB);
-
+        var editor = new MediumEditor(rB,{
+            toolbar:{
+                allowMultiParagraphSelection: false,
+                buttons:['bold','italic','underline','anchor']
+            },
+            paste:{
+                forcePlainText: true,
+                cleanPastedHTML: true,
+                cleanReplacements:[],
+                cleanTags:['meta','div','ul','ol','hr','h1','h2','h3','h4','h5','h6','img']
+            }
+        })
 
     }
 
