@@ -71,36 +71,52 @@ $(function () {
         var tplPlace = template(richTpl);
         var rB = '.J-richBox';
 
-        var txt = box.html().trim().replace(/\s+|\n/g, " ").replace(/>\s</g, "><");
+        var txt = box.html().trim().replace(/\s+|\n/g, " ").replace(/>\s</g, "><").replace(/style="(.*?)"/g,"");
         var styles = box.attr('data-styles');
 
-
+        var enters = 0;
 
         place.append(tplPlace);
         place.find(rB).html(txt);
 
 
-        place.on('focus',rB,function(e){
-            var _this = $(this);
-            e.stopPropagation();
-            e.preventDefault();
-            _this.bind('keyup',function(e){
-                e.stopPropagation();
-                e.preventDefault();
-                if (e.which === 13){
-                    console.log('enter')
-                }
-            })
-        }).on('blur',rB,function(){
+        //place.on('focus',rB,function(e){
+        //    var _this = $(this);
+        //    e.stopPropagation();
+        //    e.preventDefault();
+        //    _this.click(function(){
+        //        enters = 0;
+        //    });
+        //    _this.bind('keyup',function(e){
+        //        e.stopPropagation();
+        //        e.preventDefault();
+        //        if (e.which === 13){
+        //            enters ++;
+        //        }else{
+        //            enters = 0;
+        //        }
+        //
+        //        if (enters > 1){
+        //            console.log('p')
+        //        }else if (enters === 1){
+        //            console.log('br')
+        //        }
+        //
+        //    })
+        //
+        //});
+
+        place.on('blur',rB,function(){
 
             var _this = $(this);
-            _this.unbind('keyup');
+            //_this.unbind('keyup');
             var innerHTML = _this.html().trim();
             var inner = innerHTML.replace(/\s+|\n/g, " ").replace(/<p><br><\/p>/g, "<p></p>");
             box.html('').html(inner);
             //$('.J-rich-edit-box') && $('.J-rich-edit-box').hide()
             box.find('p').attr('style',styles);
             box.find('a').attr('style','color:#337ab7;text-decoration: none;')
+
         });
 
 
@@ -115,7 +131,9 @@ $(function () {
         };
         var editor = new MediumEditor(rB,conf);
 
-
+        editor.subscribe('editableInput',function(e,editable){
+            //no work
+        });
 
         /*
         var beginX,beginY,thisW;
@@ -201,15 +219,15 @@ $(function () {
         });
         $inputSrc.blur(function () {
             var val = $(this).val();
-            $img.attr('src', val);
+            box.find('img').attr('src', val);
         });
         $inputTitle.blur(function () {
             var val = $(this).val();
-            $img.attr('title', val);
+            box.find('img').attr('title', val);
         });
         $inputAlt.blur(function () {
             var val = $(this).val();
-            $img.attr('alt', val);
+            box.find('img').attr('alt', val);
         });
 
         //上传图片
@@ -386,7 +404,12 @@ $(function () {
                             '<head>' +
                                 '<meta content="text/html; charset=utf-8" http-equiv="Content-Type">' +
                                 '<title>' + mailTitle + '</title>' +
-                                '<style type="text/css">body{margin: 0 auto}</style>' +
+                                '<style type="text/css">' +
+                                'body{margin: 0 auto} center{display: none}' +
+                                '</style>' +
+                                '<!--[if gte mso 9]><style type="text/css">' +
+                                'center{display: block}' +
+                                '</style><![endif]-->' +
                             '</head>' +
                             '<body>' + mailTable + '</body>' +
                        '</html>';
@@ -404,7 +427,7 @@ $(function () {
         var mailHTML = $('#tableInner').html().trim().replace(/\s+|\n/g, " ").replace(/>\s</g, "><");
 
 
-        var mailTable = mailHTML.replace(/<div(.*?)>/g,"").replace(/<\/div>/g,"").replace(/<input(.*?)>/g,"");
+        var mailTable = mailHTML.replace(/<div(.*?)>/g,"").replace(/<\/div>/g,"").replace(/<input(.*?)>/g,"").replace(/<script(.*?)<\/script>/g,"");
 
 
         var htmlCode = gethtmlCode(mailTable);
