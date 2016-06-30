@@ -34,7 +34,11 @@
         .mod-box {
             width: 360px;
             margin: 0 auto;
-            padding: 20px 0;
+            padding: 20px;
+            &.fixed{
+                position: fixed;
+                top:0;
+            }
         }
     }
     .demo {
@@ -49,6 +53,8 @@
         }
     }
     .demo-fixed{
+        position: relative;
+        z-index:2;
         height:100%;
         overflow-x: hidden;
         overflow-y: auto;
@@ -188,6 +194,7 @@
         left: -400px;
         transition: all .5s;
         opacity: 0;
+        z-index:1;
         .upload-tips{
             margin: 10px 0 20px;
             color: #f60;

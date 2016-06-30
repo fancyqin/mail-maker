@@ -770,4 +770,23 @@ $(function () {
     obDOMchange();
 
 
+    function siderBarFixed(){
+        var $topBox = $('.demo-fixed .ctrl-box');
+        var $bottomBox = $('.demo-fixed .mod-box');
+        $(window).on('scroll',function(){
+            var top = $(window).scrollTop();
+            var ruleTop = $topBox[0].clientHeight +$topBox[0].offsetTop;
+
+            if (top > ruleTop){
+                $bottomBox.addClass('fixed');
+            }else {
+                $bottomBox.removeClass('fixed');
+            }
+
+        })
+    }
+    siderBarFixed();
+
+
+
 });
