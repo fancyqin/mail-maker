@@ -111,7 +111,7 @@ $(function () {
             var _this = $(this);
             //_this.unbind('keyup');
             var innerHTML = _this.html().trim();
-            var inner = innerHTML.replace(/\s+|\n/g, " ").replace(/<p><br><\/p>/g, "<p></p>");
+            var inner = innerHTML.replace(/\s+|\n/g, " ");
             box.html('').html(inner);
             //$('.J-rich-edit-box') && $('.J-rich-edit-box').hide()
             box.find('p').attr('style',styles);
@@ -131,9 +131,6 @@ $(function () {
         };
         var editor = new MediumEditor(rB,conf);
 
-        editor.subscribe('editableInput',function(e,editable){
-            //no work
-        });
 
         /*
         var beginX,beginY,thisW;
