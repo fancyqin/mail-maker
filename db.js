@@ -26,7 +26,8 @@ var mailSchema = new Schema({
     updater: String,
     updateDate: Date,
     mailHtml: String,
-    webHtml: String
+    webHtml: String,
+    mailCode: String
 });
 
 

@@ -38,7 +38,7 @@ router.post('/login', function *(next) {
 })
 
 router.get('/mail-list', function *(next) {
-    var pageSize = 5;
+    var pageSize = 20;
     var url = this.originalUrl;
     var urlAux = url.split('=');
     var currentPage = urlAux[1] ? urlAux[1] : 1;
@@ -54,7 +54,7 @@ router.get('/mail-list', function *(next) {
     });
 });
 router.post('/mail-search', function *(next) {
-    var pageSize = 5;
+    var pageSize = 20;
     var url = this.originalUrl;
     var urlAux = url.split('=');
     var currentPage = urlAux[1] ? urlAux[1] : 1;
@@ -115,7 +115,8 @@ router.post('/save-mail', function *(next) {
         // addDate: mail.date,
         addDate: new Date(),
         mailHtml: mail.mailHtml,
-        webHtml: mail.webHtml
+        webHtml: mail.webHtml,
+        mailCode: mail.mailCode
     });
     yield newMail.save(function(err, data) {
         if (err) {
@@ -145,6 +146,7 @@ router.post('/save-mail-again', function *(next) {
         mail.description = _mail.description;
         mail.mailHtml = _mail.mailHtml;
         mail.webHtml = _mail.webHtml;
+        mail.mailCode = _mail.mailCode;
 
         // _this.body = mail;
 
@@ -176,6 +178,7 @@ router.post('/modify-mail', function *(next) {
         mail.updateDate = new Date();
         mail.mailHtml = _mail.mailHtml;
         mail.webHtml = _mail.webHtml;
+        mail.mailCode = _mail.mailCode;
 
         // _this.body = mail;
 

@@ -508,7 +508,8 @@ $(function () {
                 author: $.cookie('user'),
                 description: $('#mailDescription').val(),
                 mailHtml: htmlCode,
-                webHtml: webCodeHtml
+                webHtml: webCodeHtml,
+                mailCode: mailTable
             };
             console.log(mail)
 
