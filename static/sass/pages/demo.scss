@@ -39,6 +39,43 @@
                 position: fixed;
                 top:0;
             }
+            .form-item{
+                margin-bottom: 100px;
+            }
+        }
+        .btn-box{
+            position: fixed;
+            box-sizing: border-box;
+            right: 0;
+            bottom: 0;
+            width: 400px;
+            padding: 10px;
+            height: 120px;
+            background: #fff;
+            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+            z-index:1;
+            :focus{
+                outline: 0;
+            }
+            .btn{
+                float: left;
+                width: 106px;
+                margin: 0 10px 10px;
+                padding: 0;
+                height: 40px;
+                border-radius: 3px;
+                cursor: pointer;
+                border: 1px solid #ccc;
+                background: #fff;
+                font-size: 14px;
+            }
+            .btn-main{
+                width: 360px;
+                color: #fff;
+                background: #e64545;
+                border-color: #e64545;
+                font-size: 16px;
+            }
         }
     }
     .demo {
@@ -50,6 +87,7 @@
         // background: #ebebeb;
         .demo-fixed{
             overflow-x: auto;
+            min-height: 1000px;
             center{
                 display: none;
             }
@@ -373,4 +411,8 @@
         height: 24px;
         margin: 2px;
     }
+}
+
+.main{
+    padding: 0;
 }
