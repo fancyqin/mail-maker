@@ -17,7 +17,7 @@
     .demo-sider {
         position: absolute;
         top:0;
-        left:0;
+        right:0;
         height: 100%;
         vertical-align: top;
         width: 400px;
@@ -43,7 +43,7 @@
     }
     .demo {
         //float: left;
-        margin-left: 400px;
+        margin-right: 400px;
         height: 100%;
         vertical-align: top;
         overflow: hidden;
@@ -97,7 +97,6 @@
         height: 30px;
         margin: 0 5px;
     }
-
     .form-box{
         margin-bottom: 5px;
         .form-title-s{
@@ -170,7 +169,7 @@
     padding: 0 5px;
     white-space: nowrap;
 }
-.mod-space:hover::before,.mod-space:hover::after {
+.mod-space:hover::before,.mod-space:hover::after,.mod-space.current::before,.mod-space.current::after {
     display: block;
 }
 
@@ -191,7 +190,7 @@
     .form-item{
         position: absolute;
         top:0;
-        left: -400px;
+        right: -400px;
         transition: all .5s;
         opacity: 0;
         z-index:1;
@@ -218,7 +217,7 @@
         }
     }
     .open{
-        left: 0;
+        right: 0;
         opacity: 1;
     }
 }

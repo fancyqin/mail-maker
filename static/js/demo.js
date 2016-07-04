@@ -560,7 +560,6 @@ $(function () {
                 })
             }
 
-
         }
 
     }
@@ -630,6 +629,8 @@ $(function () {
         var $thisBox = $('#' + id).parents('.form-item:first');
         $('.form-item').removeClass('open');
         $thisBox.addClass('open');
+        $('.mod-space').removeClass('current');
+        $(this).addClass('current');
     });
 
 
