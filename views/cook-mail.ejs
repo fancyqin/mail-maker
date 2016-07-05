@@ -1,17 +1,25 @@
 
 
-
-
 <% if (mailType=="festival") { %>
-    <% include demo/festival %>
+
+    <% include demo/festival.ejs %>
+
 <% } else if (mailType == "topic") { %>
-    <% include demo/topic %>
+
+    <% include demo/topic.ejs %>
+
 <% } else if (mailType == "report") { %>
-    <% include demo/report %>
+
+    <% include demo/report.ejs %>
+
 <% } else if (mailType == "report2") { %>
-    <% include demo/report-2 %>
+
+    <% include demo/report-2.ejs %>
+
 <% } else if (mailType == "infor") { %>
-    <% include demo/infor %>
+
+    <% include demo/infor.ejs %>
+
 <% } %>
 
 
