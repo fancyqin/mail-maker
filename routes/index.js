@@ -199,7 +199,7 @@ router.get('/modify-mail', function *(next) {
 
     yield this.render('modify-mail', {
         title: 'Hello World Koa!',
-        page: 'cookMail',
+        page: 'modifyMail',
         mail: yield db.Mail.findOne({_id: _id}).exec()
     })
 })

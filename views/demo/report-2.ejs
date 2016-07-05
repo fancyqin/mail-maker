@@ -1,3 +1,5 @@
+<% include ../common/header %>
+
 <div class="main">
     <div class="wrap demo-edit">
     <div class="content">
@@ -5,6 +7,8 @@
             <% include demo-sider/report-2 %>
             <div class="demo">
                 <div id="tableInner" class="demo-fixed">
+                    <% if (page == "cookMail") { %>
+                    <!--默认模板-->
                     <table border="0" cellpadding="0" cellspacing="0" width="100%">
                         <tbody>
                         <tr>
@@ -37,9 +41,9 @@
                                                         <div class="mod-space" data-type="img"
                                                              data-name="report-mainImg-1" data-titlezh="报告配图1">
                                                             <a href="http://service.made-in-china.com/market-analysis/industry-analysis-report/635864.html"><img
-                                                                    alt="2015年前三季度输变电设备" border="0" height="198"
-                                                                    src="http://edm.focuschina.com:80/MICEN/2016/3/3441-pic1.jpg"
-                                                                    width="140"></a>
+                                                                        alt="2015年前三季度输变电设备" border="0" height="198"
+                                                                        src="http://edm.focuschina.com:80/MICEN/2016/3/3441-pic1.jpg"
+                                                                        width="140"></a>
                                                         </div>
                                                     </td>
                                                     <td valign="top">
@@ -107,9 +111,9 @@
                                                         <div class="mod-space" data-type="img"
                                                              data-name="report-mainImg-2" data-titlezh="报告配图2">
                                                             <a href="http://service.made-in-china.com/market-analysis/industry-analysis-report/635884.html"><img
-                                                                alt="2015年上半年波兰市场分析报告" border="0" height="198"
-                                                                src="http://edm.focuschina.com:80/MICEN/2016/3/3441-pic2.jpg"
-                                                                width="140"></a>
+                                                                        alt="2015年上半年波兰市场分析报告" border="0" height="198"
+                                                                        src="http://edm.focuschina.com:80/MICEN/2016/3/3441-pic2.jpg"
+                                                                        width="140"></a>
                                                         </div>
                                                     </td>
                                                     <td valign="top">
@@ -532,8 +536,8 @@
                                                                 <td align="center"
                                                                     style="font-family:'微软雅黑'; color:#888; padding:20px 0px 0px; line-height:20px; font-size:12px">
                                                                     您收到此邮件是因为曾用此邮箱注册为我网的会员，若您今后不想收到此类邮件，请<a
-                                                                        href="#{backHref_var}"
-                                                                        style="font-size: 12px; color:#555; text-decoration:underline;">点此退订</a>。
+                                                                            href="#{backHref_var}"
+                                                                            style="font-size: 12px; color:#555; text-decoration:underline;">点此退订</a>。
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -581,6 +585,10 @@
                         </tr>
                         </tbody>
                     </table>
+                    <% }else if(page == "modifyMail"){ %>
+                    <%- mail.mailCode ? mail.mailCode : mail.mailHtml %>
+                    <% }%>
+
                 </div>
 
             </div>
@@ -623,3 +631,5 @@
         ]);
     })
 </script>
+
+<% include ../common/footer %>

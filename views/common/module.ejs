@@ -1408,3 +1408,10 @@
 <script type="text/javascript" src="/js/lib/upload.min.js"></script>
 <script type="text/javascript" src="/js/demo.modules.js"></script>
 <script type="text/javascript" src="/js/demo.js"></script>
+
+<% if (page == "modifyMail") { %>
+<script type="text/javascript">
+    $('#mailTitle').val('<%= mail.title %>')
+    $('#mailDescription').val('<%= mail.description %>')
+</script>
+<% }%>

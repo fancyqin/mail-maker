@@ -1,14 +1,18 @@
+<% include ../common/header %>
+
 <div class="main">
     <div class="wrap demo-edit">
         <div class="content">
             <div class="demo-wrap cf">
 
-
                 <% include demo-sider/festival %>
 
                 <div class="demo">
                     <div id="tableInner" class="demo-fixed">
-                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <% if (page == "cookMail") { %>
+                            <!--默认模板-->
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
                             <tbody>
                             <tr>
                                 <td bgcolor="#ebebeb">
@@ -395,9 +399,16 @@
                             </tr>
                             </tbody>
                         </table>
+
+                        <% }else if(page == "modifyMail"){ %>
+                            <%- mail.mailCode ? mail.mailCode : mail.mailHtml %>
+                        <% }%>
                     </div>
 
                 </div>
+
+
+
             </div>
 
         </div>
@@ -421,3 +432,5 @@
         ]);
     })
 </script>
+
+<% include ../common/footer %>

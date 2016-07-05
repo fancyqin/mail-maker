@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="/css/pages/login.css">
     <% } else if (page == "chooseDemo") { %>
         <link rel="stylesheet" href="/css/pages/choose-demo.css">
-    <% } else if (page == "cookMail") { %>
+    <% } else if (page == "cookMail" || page == "modifyMail") { %>
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anton" type="text/css">
         <link rel="stylesheet" href="/css/pages/choose-demo.css">
@@ -47,4 +47,9 @@
                 Copyright &copy; <span class="ued">MIC UED</span>
             </div>
         </div>
+    <% } %>
+
+    <% if (page == "modifyMail") { %>
+        <input type="hidden" name="" id="J-mail-id" value="<%= mail._id %>">
+        <input type="hidden" name="" id="J-mail-modify">
     <% } %>

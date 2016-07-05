@@ -1,284 +1,26 @@
 
 
+<% if (mail.type == "节日"){%>
 
+    <% include demo/festival.ejs %>
 
+<% } else if (mail.type == "专题") { %>
 
+    <% include demo/topic.ejs %>
 
-<% include common/header %>
+<% } else if (mail.type == "市场&行业分析报告") { %>
 
-<input type="hidden" name="" id="J-mail-id" value="<%= mail._id %>">
-<input type="hidden" name="" id="J-mail-modify">
-<div class="main">
+    <% include demo/report.ejs %>
 
+<% } else if (mail.type == "市场&行业分析报告2") { %>
 
-    <% if (mail.type == "节日") { %>
-        <div class="wrap demo-edit">
-            <div class="content">
-                <div class="demo-wrap cf">
-                    <% include demo/demo-sider/festival %>
-                    <div class="demo">
-                        <div id="tableInner" class="demo-fixed">
-                            <%- mail.mailCode ? mail.mailCode : mail.mailHtml %>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <% include common/module %>
-        <script type="text/javascript">
-            $('#mailTitle').val('<%= mail.title %>')
-            $('#mailDescription').val('<%= mail.description %>')
-            $(function(){
-                $.demoLoad([
-                    'festival-banner',
-                    'festival-inner',
-                    'festival-hello-title',
-                    'festival-prod4-title',
-                    'festival-prodImg-1',
-                    'festival-prodImg-2',
-                    'festival-prodImg-3',
-                    'festival-prodImg-4',
-                    'festival-btn'
-                ]);
-            })
-        </script>
-    <% } else if (mail.type == "专题") { %>
-        <div class="wrap demo-edit">
-            <div class="content">
-                <div class="demo-wrap cf">
-                    <% include demo/demo-sider/topic %>
-                    <div class="demo">
-                        <div id="tableInner" class="demo-fixed">
-                            <%- mail.mailCode ? mail.mailCode : mail.mailHtml %>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <% include common/module %>
-        <script type="text/javascript">
-            $('#mailTitle').val('<%= mail.title %>')
-            $('#mailDescription').val('<%= mail.description %>')
-            $(function(){
-                $.demoLoad([
-                   'topic-banner',
-                   'topic-inner',
-                   'topic-prodImg-1',
-                   'topic-prodImg-2',
-                   'topic-prodImg-3',
-                   'topic-prodImg-4',
-                   'topic-prodImg-5',
-                   'topic-prodImg-6',
-                   'topic-prodTxt-1',
-                   'topic-prodTxt-2',
-                   'topic-prodTxt-3',
-                   'topic-prodTxt-4',
-                   'topic-prodTxt-5',
-                   'topic-prodTxt-6',
-                   'topic-btn'
-                ]);
-            })
-        </script>
+    <% include demo/report-2.ejs %>
 
-    <% } else if (mail.type == "市场&行业分析报告") { %>
-        <div class="wrap demo-edit">
-            <div class="content">
-                <div class="demo-wrap cf">
-                    <% include demo/demo-sider/report %>
-                    <div class="demo">
-                        <div id="tableInner" class="demo-fixed">
-                            <%- mail.mailCode ? mail.mailCode : mail.mailHtml %>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <% include common/module %>
-        <script type="text/javascript">
-            $('#mailTitle').val('<%= mail.title %>')
-            $('#mailDescription').val('<%= mail.description %>')
-            $(function(){
-                $.demoLoad([
-                    'report-banner',
-                    'report-inner',
-                    'report-btn',
-                    'report-Img-1',
-                    'report-Img-2',
-                    'report-Img-3',
-                    'report-Img-4',
-                    'report-Img-5',
-                    'report-Txt-1',
-                    'report-Txt-2',
-                    'report-Txt-3',
-                    'report-Txt-4',
-                    'report-Txt-5',
-                    'report-moreTxt',
-                    'report-moreTxt-2',
-                    'report-otherTxt-1',
-                    'report-otherTxt-2',
-                    'report-otherTxt-3',
-                    'report-otherTxt-4',
-                    'report-otherTxt-5',
-                    'report-otherTxt-6',
-                    'report-types'
-                ]);
-            })
-        </script>
+<% } else if (mail.type == "资讯快递") { %>
 
-    <% } else if (mail.type == "市场&行业分析报告2") { %>
-        <div class="wrap demo-edit">
-            <div class="content">
-                <div class="demo-wrap cf">
-                    <% include demo/demo-sider/report-2 %>
-                    <div class="demo">
-                        <div id="tableInner" class="demo-fixed">
-                            <%- mail.mailCode ? mail.mailCode : mail.mailHtml %>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <% include common/module %>
-        <script type="text/javascript">
-            $('#mailTitle').val('<%= mail.title %>')
-            $('#mailDescription').val('<%= mail.description %>')
-            $(function(){
-                $.demoLoad([
-                    'report-banner',
-                    'report-mainImg-1',
-                    'report-mainImg-2',
-                    'report-mainTxt-1',
-                    'report-mainTxt-2',
-                    'report-btn',
-                    'report-btn-2',
-                    'report-Img-1',
-                    'report-Img-2',
-                    'report-Img-3',
-                    'report-Img-4',
-                    'report-Img-5',
-                    'report-Txt-1',
-                    'report-Txt-2',
-                    'report-Txt-3',
-                    'report-Txt-4',
-                    'report-Txt-5',
-                    'report-moreTxt',
-                    'report-moreTxt-2',
-                    'report-otherTxt-1',
-                    'report-otherTxt-2',
-                    'report-otherTxt-3',
-                    'report-otherTxt-4',
-                    'report-otherTxt-5',
-                    'report-otherTxt-6',
-                    'report-types'
-                ]);
-            })
-        </script>
+    <% include demo/infor.ejs %>
 
-    <% } else if (mail.type == "资讯快递") { %>
-        <div class="wrap demo-edit">
-            <div class="content">
-                <div class="demo-wrap cf">
-                    <% include demo/demo-sider/infor %>
-                    <div class="demo">
-                        <div id="tableInner" class="demo-fixed">
-                            <%- mail.mailCode ? mail.mailCode : mail.mailHtml %>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <% include common/module %>
-        <script type="text/javascript">
-            $(function(){
-
-                var $addCtrlbox = $('.add-ctrlbox');
-                var numOfBlocks = $('#numOfBlocks').val();
-                var nums = JSON.parse(numOfBlocks);
-                $addCtrlbox.find('.itm').remove();
-
-                addBlock('新闻',nums.news);
-                addBlock('故事',nums.storys);
-                console.log(nums);
-
-                function addBlock(type,num){
-                    var $thisB = $('.add-ctrlbox[data-title='+type+']')
-                    for (var i = num;i> 0;i--){
-                        $thisB.prepend('<span class="itm">'+ type +i+'</span>')
-                    }
-                    $thisB.find('.itm:last').append('<i class="J-del">X</i>');
-                    $thisB.find('.itm:first').find('.J-del').remove();
-                }
-
-                $('.J-addMod').click(function(){
-
-                    var box = $(this).parent();
-                    var title = box.attr('data-title');
-                    var num = box.find('.itm').length;
-                    var name = box.attr('data-modspace');
-                    var JSONname = name.split('-')[1]+'s';
-                    var JmodSpace = 'J-' +name;
-                    if (num < 4){
-
-                        var $tpl = $('.'+JmodSpace+':last');
-                        var tplHTML = $tpl.html();
-                        var newModSpace = name+'-'+(num+1);
-                        $tpl.after('<tr class="'+JmodSpace+'" data-index="'+ (num+1) +'">'+ tplHTML +'</tr>');
-                        $tpl = $('.'+JmodSpace+':last');
-                        $tpl.find('.mod-space').attr('data-name',newModSpace);
-                        $.demoLoad([newModSpace]);
-
-                        nums[JSONname] = num+1;
-
-                        $('#numOfBlocks').attr('value',JSON.stringify(nums));
-
-                        $(this).siblings('.itm:last').find('.J-del').remove();
-                        $(this).before('<span class="itm">'+ title + (num+1) +'<i class="J-del">X</i></span>');
-                    }
-
-                });
-
-                $addCtrlbox.on('click','.J-del',function(){
-                    var $thisBox = $(this).closest('.add-ctrlbox');
-                    var index = $(this).parent().index();
-                    var num = $thisBox.find('.itm').length;
-                    var name = $(this).parents('.add-ctrlbox').attr('data-modspace');
-                    var JSONname = name.split('-')[1]+'s';
-
-                    if(num > 1){
-
-                        $('.J-'+ name +':[data-index='+ (index+1) +']').remove();
-
-                        $thisBox.find('.itm:last').remove();
-                        nums[JSONname] = num-1;
-                        $('#numOfBlocks').attr('value',JSON.stringify(nums));
-                        if($thisBox.find('.itm:last').index('.itm') > 0){
-                            $thisBox.find('.itm:last').append('<i class="J-del">X</i>');
-                        }
-                    }
-
-
-                })
-            })
-
-        </script>
-
-        <script type="text/javascript">
-            $('#mailTitle').val('<%= mail.title %>')
-            $('#mailDescription').val('<%= mail.description %>')
-            $(function(){
-                $.demoLoad([
-                    'infor-month',
-                    'infor-firstTitle',
-                    'infor-firstImg',
-                    'infor-firstInner',
-                    'infor-new-1',
-                    'infor-story-1',
-                    'infor-corpNew',
-                    'infor-study'
-                ]);
-            })
-        </script>
-    <% } %>
+<% } %>
 
 
 
@@ -293,8 +35,4 @@
 
 
 
-    
-</div>
 
-
-<% include common/footer %>

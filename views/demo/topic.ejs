@@ -1,3 +1,5 @@
+<% include ../common/header %>
+
 <div class="main">
     <div class="wrap demo-edit">
     <div class="content">
@@ -5,6 +7,8 @@
             <% include demo-sider/topic %>
             <div class="demo">
                 <div id="tableInner" class="demo-fixed">
+                    <% if (page == "cookMail") { %>
+                    <!--默认模板-->
                     <table border="0" cellpadding="0" cellspacing="0" width="100%">
                         <tbody>
                         <tr>
@@ -90,7 +94,7 @@
                                                                                                 <tr>
                                                                                                     <td align="center" style="border:1px solid #ebebeb">
                                                                                                         <div class="mod-space" data-type="img" data-name="topic-prodImg-2">
-                                                                                                        <a href="http://www.made-in-china.com/special/beauty-equipment/#special2"><img alt="Skin Beauty Equipment " title="Skin Beauty Equipment " src="http://edm.made-in-china.com/MICEN/2015/12/3375-pic2.jpg" border="0" width="186" height="186"></a>
+                                                                                                            <a href="http://www.made-in-china.com/special/beauty-equipment/#special2"><img alt="Skin Beauty Equipment " title="Skin Beauty Equipment " src="http://edm.made-in-china.com/MICEN/2015/12/3375-pic2.jpg" border="0" width="186" height="186"></a>
                                                                                                         </div>
                                                                                                     </td>
                                                                                                 </tr>
@@ -112,7 +116,7 @@
                                                                                                 <tr>
                                                                                                     <td align="center" style="border:1px solid #ebebeb">
                                                                                                         <div class="mod-space" data-type="img" data-name="topic-prodImg-3">
-                                                                                                        <a href="http://www.made-in-china.com/special/beauty-equipment/#special3"><img alt="192 PCS Laser Diodes Laser Hair Regrowth" title="192 PCS Laser Diodes Laser Hair Regrowth" src="http://edm.made-in-china.com/MICEN/2015/12/3375-pic3.jpg" border="0" width="186" height="186"></a>
+                                                                                                            <a href="http://www.made-in-china.com/special/beauty-equipment/#special3"><img alt="192 PCS Laser Diodes Laser Hair Regrowth" title="192 PCS Laser Diodes Laser Hair Regrowth" src="http://edm.made-in-china.com/MICEN/2015/12/3375-pic3.jpg" border="0" width="186" height="186"></a>
                                                                                                         </div>
                                                                                                     </td>
                                                                                                 </tr>
@@ -145,7 +149,7 @@
                                                                                                 <tr>
                                                                                                     <td align="center" style="border:1px solid #ebebeb">
                                                                                                         <div class="mod-space" data-type="img" data-name="topic-prodImg-4">
-                                                                                                        <a href="http://www.made-in-china.com/special/beauty-equipment/#special4"><img alt="3D Skin Analyzer System " title="3D Skin Analyzer System " src="http://edm.made-in-china.com/MICEN/2015/12/3375-pic4.jpg" border="0" width="186" height="186"></a>
+                                                                                                            <a href="http://www.made-in-china.com/special/beauty-equipment/#special4"><img alt="3D Skin Analyzer System " title="3D Skin Analyzer System " src="http://edm.made-in-china.com/MICEN/2015/12/3375-pic4.jpg" border="0" width="186" height="186"></a>
                                                                                                         </div>
                                                                                                     </td>
                                                                                                 </tr>
@@ -167,7 +171,7 @@
                                                                                                 <tr>
                                                                                                     <td align="center" style="border:1px solid #ebebeb">
                                                                                                         <div class="mod-space" data-type="img" data-name="topic-prodImg-5">
-                                                                                                        <a href="http://www.made-in-china.com/special/beauty-equipment/#special5"><img alt="New Design Spray Tanning &amp; Body Painting Airbrush Kit (BDA68000) " title="New Design Spray Tanning &amp; Body Painting Airbrush Kit (BDA68000) " src="http://edm.made-in-china.com/MICEN/2015/12/3375-pic5.jpg" border="0" width="186" height="186"></a>
+                                                                                                            <a href="http://www.made-in-china.com/special/beauty-equipment/#special5"><img alt="New Design Spray Tanning &amp; Body Painting Airbrush Kit (BDA68000) " title="New Design Spray Tanning &amp; Body Painting Airbrush Kit (BDA68000) " src="http://edm.made-in-china.com/MICEN/2015/12/3375-pic5.jpg" border="0" width="186" height="186"></a>
                                                                                                         </div>
                                                                                                     </td>
                                                                                                 </tr>
@@ -189,7 +193,7 @@
                                                                                                 <tr>
                                                                                                     <td align="center" style="border:1px solid #ebebeb">
                                                                                                         <div class="mod-space" data-type="img" data-name="topic-prodImg-6">
-                                                                                                        <a href="http://www.made-in-china.com/special/beauty-equipment/#special2"><img alt="808nm Diode Hair Removal " title="808nm Diode Hair Removal " src="http://edm.made-in-china.com/MICEN/2015/12/3375-pic6.jpg" border="0" width="186" height="186"></a>
+                                                                                                            <a href="http://www.made-in-china.com/special/beauty-equipment/#special2"><img alt="808nm Diode Hair Removal " title="808nm Diode Hair Removal " src="http://edm.made-in-china.com/MICEN/2015/12/3375-pic6.jpg" border="0" width="186" height="186"></a>
                                                                                                         </div>
                                                                                                     </td>
                                                                                                 </tr>
@@ -359,6 +363,11 @@
                         </tr>
                         </tbody>
                     </table>
+
+                    <% }else if(page == "modifyMail"){ %>
+                    <%- mail.mailCode ? mail.mailCode : mail.mailHtml %>
+                    <% }%>
+
                 </div>
 
             </div>
@@ -390,3 +399,5 @@
        ]);
     })
 </script>
+
+<% include ../common/footer %>

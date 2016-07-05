@@ -1,3 +1,5 @@
+<% include ../common/header %>
+
 <div class="main">
     <div class="wrap demo-edit">
     <div class="content">
@@ -5,6 +7,9 @@
             <% include demo-sider/report %>
             <div class="demo">
                 <div id="tableInner" class="demo-fixed">
+
+                    <% if (page == "cookMail") { %>
+                    <!--默认模板-->
                     <table border="0" cellpadding="0" cellspacing="0" width="100%">
                         <tbody>
                         <tr>
@@ -250,7 +255,7 @@
                                                                                      style="display: inline-block;margin-left: 5px"
                                                                                      data-type="richTxt" data-styles="margin: 0;font-family:'微软雅黑'; font-size:14px; line-height:24px;"
                                                                                      data-name="report-otherTxt-1"
-                                                                                     ><p style="margin: 0;font-family:'微软雅黑'; font-size:14px; line-height:24px;"><a
+                                                                                ><p style="margin: 0;font-family:'微软雅黑'; font-size:14px; line-height:24px;"><a
                                                                                                 href="http://service.made-in-china.com/market-analysis/subsector-analysis/412874.html"
                                                                                                 style=" font-family:'微软雅黑'; font-size:14px; line-height:24px; color:#246bb3;text-decoration:none;">
                                                                                             XXXX行业分析报告</a></p>
@@ -422,8 +427,8 @@
                                                                 <td align="center"
                                                                     style="font-family:'微软雅黑'; color:#888; padding:20px 0px 0px; line-height:20px; font-size:12px">
                                                                     您收到此邮件是因为曾用此邮箱注册为我网的会员，若您今后不想收到此类邮件，请<a
-                                                                        href="#{backHref_var}"
-                                                                        style="font-size: 12px; color:#555; text-decoration:underline;">点此退订</a>。
+                                                                            href="#{backHref_var}"
+                                                                            style="font-size: 12px; color:#555; text-decoration:underline;">点此退订</a>。
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -471,6 +476,10 @@
                         </tr>
                         </tbody>
                     </table>
+
+                    <% }else if(page == "modifyMail"){ %>
+                    <%- mail.mailCode ? mail.mailCode : mail.mailHtml %>
+                    <% }%>
                 </div>
 
             </div>
@@ -509,3 +518,5 @@
         ]);
     })
 </script>
+
+<% include ../common/footer %>
