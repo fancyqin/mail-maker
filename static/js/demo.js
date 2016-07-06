@@ -394,25 +394,6 @@ $(function () {
 
 
 
-
-    function gethtmlCode(mailTable) {
-        var mailTitle = $('#mailTitle').val();
-        var htmlCode = '<html>' +
-                            '<head>' +
-                                '<meta content="text/html; charset=utf-8" http-equiv="Content-Type">' +
-                                '<title>' + mailTitle + '</title>' +
-                                '<style type="text/css">' +
-                                'body{margin: 0 auto} center{display: none}' +
-                                '</style>' +
-                                '<!--[if gte mso 9]><style type="text/css">' +
-                                'center{display: block}' +
-                                '</style><![endif]-->' +
-                            '</head>' +
-                            '<body>' + mailTable + '</body>' +
-                       '</html>';
-        return htmlCode;
-    }
-
     //导出html
 
     var codePop = $('.code-pop');
@@ -423,11 +404,16 @@ $(function () {
         var mailTitle = $('#mailTitle').val();
         var mailHTML = $('#tableInner').html().trim().replace(/\s+|\n/g, " ").replace(/>\s</g, "><");
 
-
         var mailTable = mailHTML.replace(/<div(.*?)>/g,"").replace(/<\/div>/g,"").replace(/<input(.*?)>/g,"").replace(/<script(.*?)<\/script>/g,"");
 
+        $('body').append('<div id="mailCode" style="display:none">'+ mailTable +'</div>');
 
-        var htmlCode = gethtmlCode(mailTable);
+        $('#mailCode').find('.J-toggle.hide').remove();
+        var finalCode = $('#mailCode').html();
+
+        $('#mailCode').remove();
+
+        var htmlCode = gethtmlCode(finalCode);
 
         if (mailTitle === '') {
             alert('邮件主题不能为空')
@@ -438,6 +424,54 @@ $(function () {
         }
         
     });
+
+    $('#exportWebMail').click(function() {
+        var lang = JSON.parse($('#mailHFType').val()).lang;
+        var mailTitle = $('#mailTitle').val();
+        var mailTable = $('#tableInner').html().trim().replace(/\s+|\n/g, " ").replace(/>\s</g, "><");
+        if (mailTitle === '') {
+            alert('邮件主题不能为空')
+        }else{
+            $('body').append('<div id="webCode" style="display:none">'+ mailTable +'</div>')
+
+            $('#webCode .J-web').remove();
+
+            var $hello = $('#webCode .J-webHello');
+            if ($hello.length > 0) {
+                switch(lang){
+                    case 'en':
+                        $hello.text('Dear Sir / Madam,');
+                        break;
+                    case 'cn':
+                        $hello.text('尊敬的先生/女士，');
+                        break;
+                    case 'ru':
+                        $hello.text('дравствуйте, Госпожа/Господин,');
+                        break;
+                    case 'fr':
+                        $hello.text('Bonjour, Mesdames/Messieurs,');
+                        break;
+                    case 'es':
+                        $hello.text('Hola, Señor/a,');
+                        break;
+                    case 'pt':
+                        $hello.text('Prezado Sr./Sra.');
+                        break;
+
+                }
+            }
+            var webCodeHTML = $('#webCode').html();
+            var webCode =  webCodeHTML.replace().replace(/<div(.*?)>/g,"").replace(/<\/div>/g,"").replace(/<input(.*?)>/g,"");
+            var webCodeHtml = gethtmlCode(webCode);
+            $('#codeCopy').val(webCodeHtml);
+            codePop.show();
+
+            $('#webCode').remove();
+        }
+
+    });
+
+
     //预览
 
     $('#priew').click(function () {
@@ -453,6 +487,77 @@ $(function () {
         saveMail();
         
     });
+
+
+
+
+    window.onbeforeunload = function (e) {
+        if(!isSaved){
+            var msg = '您正准备离开此页，您未保存的编辑数据将会丢失！！！！慎重啊，小主~';
+            e.returnValue = msg;
+            return msg;
+        }
+    };
+
+
+
+
+
+
+    //切换mod
+
+    $('#tableInner').on('click','.mod-space',function(){
+        var id = $(this).attr('data-name');
+        var $thisBox = $('#' + id).parents('.form-item:first');
+        $('.form-item').removeClass('open');
+        $thisBox.addClass('open');
+        $('.mod-space').removeClass('current');
+        $(this).addClass('current');
+    });
+
+
+
+    if($('.J-toggle').hasClass('hide')){
+        $('.J-toggle.hide').each(function(){
+            var a = $(this).attr('data-toggle');
+            var $target = $('.toggle-box[data-toggle="'+a+'"]');
+            $target.find('input[value="0"]').prop('checked',true);
+        })
+
+    }
+
+    $('.toggle-box').on('change','input',function(e){
+        var toggle = $(e.target).parents('.toggle-box').attr('data-toggle');
+        var val = $('.toggle-box').find('input:checked').val();
+        console.log(val);
+        var $toggleItem = $('.J-toggle[data-toggle="'+toggle+'"]');
+        if(val === '0'){
+            $toggleItem.addClass('hide').hide();
+        }else{
+
+            $toggleItem.removeClass('hide').show();
+        }
+    })
+
+
+    function gethtmlCode(mailTable) {
+        var mailTitle = $('#mailTitle').val();
+        var htmlCode = '<html>' +
+            '<head>' +
+            '<meta content="text/html; charset=utf-8" http-equiv="Content-Type">' +
+            '<title>' + mailTitle + '</title>' +
+            '<style type="text/css">' +
+            'body{margin: 0 auto} center{display: none}' +
+            '</style>' +
+            '<!--[if gte mso 9]><style type="text/css">' +
+            'center{display: block}' +
+            '</style><![endif]-->' +
+            '</head>' +
+            '<body>' + mailTable + '</body>' +
+            '</html>';
+        return htmlCode;
+    }
+
 
     function saveMail(){
 
@@ -566,75 +671,6 @@ $(function () {
     }
 
 
-    window.onbeforeunload = function (e) {
-        if(!isSaved){
-            var msg = '您正准备离开此页，您未保存的编辑数据将会丢失！！！！慎重啊，小主~';
-            e.returnValue = msg;
-            return msg;
-        }
-    };
-
-
-
-    $('#exportWebMail').click(function() {
-        var lang = JSON.parse($('#mailHFType').val()).lang;
-        var mailTitle = $('#mailTitle').val();
-        var mailTable = $('#tableInner').html().trim().replace(/\s+|\n/g, " ").replace(/>\s</g, "><");
-        if (mailTitle === '') {
-            alert('邮件主题不能为空')
-        }else{
-        $('body').append('<div id="webCode" style="display:none">'+ mailTable +'</div>')
-
-        $('#webCode .J-web').remove();
-
-        var $hello = $('#webCode .J-webHello');
-        if ($hello.length > 0) {
-            switch(lang){
-                case 'en':
-                    $hello.text('Dear Sir / Madam,');
-                    break;
-                case 'cn':
-                    $hello.text('尊敬的先生/女士，');
-                    break;
-                case 'ru':
-                    $hello.text('дравствуйте, Госпожа/Господин,');
-                    break;
-                case 'fr':
-                    $hello.text('Bonjour, Mesdames/Messieurs,');
-                    break;
-                case 'es':
-                    $hello.text('Hola, Señor/a,');
-                    break;
-                case 'pt':
-                    $hello.text('Prezado Sr./Sra.');
-                    break;
-
-            }
-        }
-        var webCodeHTML = $('#webCode').html();
-        var webCode =  webCodeHTML.replace().replace(/<div(.*?)>/g,"").replace(/<\/div>/g,"").replace(/<input(.*?)>/g,"");
-        var webCodeHtml = gethtmlCode(webCode);
-        $('#codeCopy').val(webCodeHtml);
-        codePop.show();
-
-        $('#webCode').remove();
-        }
-
-    });
-
-
-    //切换mod
-
-    $('#tableInner').on('click','.mod-space',function(){
-        var id = $(this).attr('data-name');
-        var $thisBox = $('#' + id).parents('.form-item:first');
-        $('.form-item').removeClass('open');
-        $thisBox.addClass('open');
-        $('.mod-space').removeClass('current');
-        $(this).addClass('current');
-    });
-
-
     //校验网址
     function isHttp(input, cb) {
         var val = input.val();
@@ -730,28 +766,7 @@ $(function () {
 
 
 
-    if($('.J-toggle').hasClass('hide')){
-        $('.J-toggle.hide').each(function(){
-            var a = $(this).attr('data-toggle');
-            var $target = $('.toggle-box[data-toggle="'+a+'"]');
-            $target.find('input[value="0"]').prop('checked',true);
-            console.log();
-        })
 
-    }
-
-    $('.toggle-box').on('change','input',function(e){
-        var toggle = $(e.target).parents('.toggle-box').attr('data-toggle');
-        var val = $('.toggle-box').find('input:checked').val();
-        console.log(val);
-        var $toggleItem = $('.J-toggle[data-toggle="'+toggle+'"]');
-        if(val === '0'){
-            $toggleItem.addClass('hide').hide();
-        }else{
-
-            $toggleItem.removeClass('hide').show();
-        }
-    })
 
 
     function obDOMchange (){
