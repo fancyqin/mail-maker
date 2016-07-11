@@ -72,9 +72,9 @@ $(function () {
         var rB = '.J-richBox';
 
         var txt = box.html().trim().replace(/\s+|\n/g, " ").replace(/>\s</g, "><").replace(/style="(.*?)"/g,"");
-        var styles = box.attr('data-styles');
+        var styles =   box.attr('data-styles');
         var listyles = box.attr('data-ulstyles');
-
+        var h3styles = box.attr('data-h3styles');
 
         place.append(tplPlace);
         place.find(rB).html(txt);
@@ -90,16 +90,17 @@ $(function () {
             box.html('').html(inner);
 
             box.find('p').attr('style',styles);
-            box.find('a').attr('style','color:#337ab7;text-decoration: none;')
+            box.find('a').attr('style','color:#337ab7;text-decoration: none;');
+            box.find('h3').attr('style',h3styles);
+            box.find('ul').attr('style','margin-top:0;list-style-type: disc');
+            box.find('ol').attr('style','margin-top:0;list-style-type: decimal');
             box.find('li').attr('style',listyles);
-            box.find('ul').attr('style','margin-left: 16px;list-style-type: disc');
-            box.find('ol').attr('style','margin-left: 20px;list-style-type: decimal');
         });
 
 
         var conf = {
             toolbar:{
-                buttons:['bold', 'italic', 'underline', 'anchor', 'orderedlist', 'unorderedlist']
+                buttons:['bold', 'italic', 'underline', 'anchor', 'orderedlist', 'unorderedlist','h3']
             },
             paste:{
                 forcePlainText: true
@@ -496,22 +497,23 @@ $(function () {
     if($('.J-toggle').hasClass('hide')){
         $('.J-toggle.hide').each(function(){
             var a = $(this).attr('data-toggle');
-            var $target = $('.toggle-box[data-toggle="'+a+'"]');
-            $target.find('input[value="0"]').prop('checked',true);
+            var $target = $('.toggle-box label[data-toggle="'+a+'"]');
+            $target.find('input').prop('checked',false);
         })
-
     }
 
     $('.toggle-box').on('change','input',function(e){
-        var toggle = $(e.target).parents('.toggle-box').attr('data-toggle');
-        var val = $('.toggle-box').find('input:checked').val();
-        console.log(val);
+        var $label = $(e.target).parents('label');
+        var toggle = $label.attr('data-toggle');
+
+        var val = $label.find('input:checked').prop('checked');
+
         var $toggleItem = $('.J-toggle[data-toggle="'+toggle+'"]');
-        if(val === '0'){
-            $toggleItem.addClass('hide').hide();
+        if(val){
+            $toggleItem.removeClass('hide').show();
         }else{
 
-            $toggleItem.removeClass('hide').show();
+            $toggleItem.addClass('hide').hide();
         }
     })
 

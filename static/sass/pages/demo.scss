@@ -136,7 +136,8 @@
             height: auto;
             font-size: 12px;
             ul,ol{
-                margin-left: 16px;
+                margin: 0 0 0 16px;
+                padding: 0;
             }
             ul{
                 list-style: disc;

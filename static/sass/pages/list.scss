@@ -103,6 +103,8 @@ body {
     white-space: nowrap;
     ul {
         position: absolute;
+        margin: 0;
+        padding: 0;
         border: 1px solid #ddd;
         background: #fff;
         display: none;
