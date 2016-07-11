@@ -73,57 +73,33 @@ $(function () {
 
         var txt = box.html().trim().replace(/\s+|\n/g, " ").replace(/>\s</g, "><").replace(/style="(.*?)"/g,"");
         var styles = box.attr('data-styles');
+        var listyles = box.attr('data-ulstyles');
 
-        var enters = 0;
 
         place.append(tplPlace);
         place.find(rB).html(txt);
 
 
-        //place.on('focus',rB,function(e){
-        //    var _this = $(this);
-        //    e.stopPropagation();
-        //    e.preventDefault();
-        //    _this.click(function(){
-        //        enters = 0;
-        //    });
-        //    _this.bind('keyup',function(e){
-        //        e.stopPropagation();
-        //        e.preventDefault();
-        //        if (e.which === 13){
-        //            enters ++;
-        //        }else{
-        //            enters = 0;
-        //        }
-        //
-        //        if (enters > 1){
-        //            console.log('p')
-        //        }else if (enters === 1){
-        //            console.log('br')
-        //        }
-        //
-        //    })
-        //
-        //});
+
 
         place.on('blur',rB,function(){
 
             var _this = $(this);
-            //_this.unbind('keyup');
             var innerHTML = _this.html().trim();
             var inner = innerHTML.replace(/\s+|\n/g, " ");
             box.html('').html(inner);
-            //$('.J-rich-edit-box') && $('.J-rich-edit-box').hide()
+
             box.find('p').attr('style',styles);
             box.find('a').attr('style','color:#337ab7;text-decoration: none;')
-
+            box.find('li').attr('style',listyles);
+            box.find('ul').attr('style','margin-left: 16px;list-style-type: disc');
+            box.find('ol').attr('style','margin-left: 20px;list-style-type: decimal');
         });
 
 
         var conf = {
             toolbar:{
-                allowMultiParagraphSelection: false,
-                buttons:['bold','italic','underline','anchor']
+                buttons:['bold', 'italic', 'underline', 'anchor', 'orderedlist', 'unorderedlist']
             },
             paste:{
                 forcePlainText: true
