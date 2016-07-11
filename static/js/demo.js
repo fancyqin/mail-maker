@@ -36,6 +36,7 @@ $(function () {
     });
 
 
+
     //富文本
     /*
     function newEditor(box, placeholderID) {
@@ -779,6 +780,23 @@ $(function () {
     }
     siderBarFixed();
 
+    function codeEditorMode(){
+        var editor = ace.edit("codeInner");
 
+        editor.setTheme("ace/theme/monokai");
+        editor.getSession().setMode("ace/mode/html");
+
+        $('.J-EditorCodeMode').on('click',function(){
+            var html = $('#tableInner').html();
+
+            editor.setValue(html);
+
+            $('#tableInner').hide();
+            $('#codeInner').show();
+        })
+
+
+    }
+    codeEditorMode();
 
 });
