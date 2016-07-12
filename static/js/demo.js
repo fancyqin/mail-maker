@@ -782,17 +782,25 @@ $(function () {
 
     function codeEditorMode(){
         var editor = ace.edit("codeInner");
-
+        var $code = $('#codeInner');
+        var $table = $('#tableInner');
         editor.setTheme("ace/theme/monokai");
-        editor.getSession().setMode("ace/mode/html");
-
+        var session = editor.getSession();
+        session.setMode("ace/mode/html");
+        session.setUseWrapMode(true);
+        //session.setUseSoftTabs(false);
+        //session.setOption('indentedSoftWrap', true);
+        $('.J-EditorCodeMode').hide();
         $('.J-EditorCodeMode').on('click',function(){
-            var html = $('#tableInner').html();
-
-            editor.setValue(html);
-
-            $('#tableInner').hide();
-            $('#codeInner').show();
+            if ($code.hasClass('open')){
+                var code  = editor.getValue();
+                $table.html('').html(code);
+                $code.removeClass('open');
+            }else{
+                $code.addClass('open');
+                var html = $table.html();
+                editor.setValue(html);
+            }
         })
 
 
