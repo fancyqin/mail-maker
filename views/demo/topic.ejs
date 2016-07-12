@@ -395,25 +395,26 @@
 
 <% include ../common/module %>
 <script type="text/javascript">
-    $(function(){
-       $.demoLoad([
-           'topic-banner',
-           'topic-inner',
-           'topic-prodImg-1',
-           'topic-prodImg-2',
-           'topic-prodImg-3',
-           'topic-prodImg-4',
-           'topic-prodImg-5',
-           'topic-prodImg-6',
-           'topic-prodTxt-1',
-           'topic-prodTxt-2',
-           'topic-prodTxt-3',
-           'topic-prodTxt-4',
-           'topic-prodTxt-5',
-           'topic-prodTxt-6',
-           'topic-btn'
-       ]);
-    })
+
+    var mail = new MailMaker({
+        items:[
+            ['topic-banner','banner图片'],
+            ['topic-inner','文本内容'],
+            ['topic-prodImg-1','产品图片1'],
+            ['topic-prodImg-2','产品图片2'],
+            ['topic-prodImg-3','产品图片3'],
+            ['topic-prodImg-4','产品图片4'],
+            ['topic-prodImg-5','产品图片5'],
+            ['topic-prodImg-6','产品图片6'],
+            ['topic-prodTxt-1','产品信息1'],
+            ['topic-prodTxt-2','产品信息2'],
+            ['topic-prodTxt-3','产品信息3'],
+            ['topic-prodTxt-4','产品信息4'],
+            ['topic-prodTxt-5','产品信息5'],
+            ['topic-prodTxt-6','产品信息6'],
+            ['topic-btn','按钮']
+        ]
+    });
 </script>
 
 <% include ../common/footer %>

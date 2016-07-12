@@ -105,6 +105,16 @@
                                                                                 <a href="http://www.made-in-china.com">hello，我是最新新闻动态的标题</a></h3>
                                                                             <p style="margin: 0;line-height: 20px; font-family: '宋体','SimSun','Microsoft YaHei'; font-size: 12px;color: #555;">我是最新新闻动态的正文，我是最新新闻动态的正文，我是最新新闻动态的正文，我是最新新闻动态的正文，我是最新新闻动态的正文。<br>
                                                                                 <a href="http://www.made-in-china.com">查看详情&gt;&gt;</a></p>
+                                                                            <p style="margin: 0"><br></p>
+                                                                            <h3 style="margin: 0 0 10px; font-family: '宋体','SimSun','Microsoft YaHei'; line-height: 20px; font-weight: bold; font-size: 12px; ">
+                                                                                <a href="http://www.made-in-china.com">hello，我是最新新闻动态的标题</a></h3>
+                                                                            <p style="margin: 0;line-height: 20px; font-family: '宋体','SimSun','Microsoft YaHei'; font-size: 12px;color: #555;">我是最新新闻动态的正文，我是最新新闻动态的正文，我是最新新闻动态的正文，我是最新新闻动态的正文，我是最新新闻动态的正文。<br>
+                                                                                <a href="http://www.made-in-china.com">查看详情&gt;&gt;</a></p>
+                                                                            <p style="margin: 0"><br></p>
+                                                                            <h3 style="margin: 0 0 10px; font-family: '宋体','SimSun','Microsoft YaHei'; line-height: 20px; font-weight: bold; font-size: 12px; ">
+                                                                                <a href="http://www.made-in-china.com">hello，我是最新新闻动态的标题</a></h3>
+                                                                            <p style="margin: 0;line-height: 20px; font-family: '宋体','SimSun','Microsoft YaHei'; font-size: 12px;color: #555;">我是最新新闻动态的正文，我是最新新闻动态的正文，我是最新新闻动态的正文，我是最新新闻动态的正文，我是最新新闻动态的正文。<br>
+                                                                                <a href="http://www.made-in-china.com">查看详情&gt;&gt;</a></p>
                                                                         </div>
                                                                     </td>
                                                                 </tr>
@@ -171,6 +181,16 @@
                                                                 <tr class="J-infor-story" data-index="1">
                                                                     <td style="padding: 0 20px 20px;">
                                                                         <div class="mod-space" data-type="richTxt" data-name="infor-story-1" data-styles="margin: 0;line-height: 20px; font-family: '宋体','SimSun','Microsoft YaHei'; font-size: 12px;color: #555;" data-h3styles="margin: 0 0 10px; font-family: '宋体','SimSun','Microsoft YaHei'; line-height: 20px; font-weight: bold; font-size: 12px;">
+                                                                            <h3 style="margin: 0 0 10px; font-family: '宋体','SimSun','Microsoft YaHei'; line-height: 20px; font-weight: bold; font-size: 12px; ">
+                                                                                <a href="http://www.made-in-china.com">hello，我是成功故事的标题</a></h3>
+                                                                            <p style="margin: 0;line-height: 20px; font-family: '宋体','SimSun','Microsoft YaHei'; font-size: 12px;color: #555;">我是成功故事的正文，我是成功故事的正文，我是成功故事的正文，我是成功故事的正文，我是成功故事的正文。<br>
+                                                                                <a href="http://www.made-in-china.com">查看详情&gt;&gt;</a></p>
+                                                                            <p style="margin: 0;"><br></p>
+                                                                            <h3 style="margin: 0 0 10px; font-family: '宋体','SimSun','Microsoft YaHei'; line-height: 20px; font-weight: bold; font-size: 12px; ">
+                                                                                <a href="http://www.made-in-china.com">hello，我是成功故事的标题</a></h3>
+                                                                            <p style="margin: 0;line-height: 20px; font-family: '宋体','SimSun','Microsoft YaHei'; font-size: 12px;color: #555;">我是成功故事的正文，我是成功故事的正文，我是成功故事的正文，我是成功故事的正文，我是成功故事的正文。<br>
+                                                                                <a href="http://www.made-in-china.com">查看详情&gt;&gt;</a></p>
+                                                                            <p style="margin: 0;"><br></p>
                                                                             <h3 style="margin: 0 0 10px; font-family: '宋体','SimSun','Microsoft YaHei'; line-height: 20px; font-weight: bold; font-size: 12px; ">
                                                                                 <a href="http://www.made-in-china.com">hello，我是成功故事的标题</a></h3>
                                                                             <p style="margin: 0;line-height: 20px; font-family: '宋体','SimSun','Microsoft YaHei'; font-size: 12px;color: #555;">我是成功故事的正文，我是成功故事的正文，我是成功故事的正文，我是成功故事的正文，我是成功故事的正文。<br>
@@ -337,97 +357,102 @@
 
 
 <% include ../common/module %>
+
+
+
 <script type="text/javascript">
-    $(function(){
-
-        var $addCtrlbox = $('.add-ctrlbox');
-        var numOfBlocks = $('#numOfBlocks').val();
-        var nums = JSON.parse(numOfBlocks);
-        $addCtrlbox.find('.itm').remove();
-
-        addBlock('新闻',nums.news);
-        addBlock('故事',nums.storys);
-        console.log(nums);
-
-        function addBlock(type,num){
-            var $thisB = $('.add-ctrlbox[data-title='+type+']')
-            for (var i = num;i> 0;i--){
-                $thisB.prepend('<span class="itm">'+ type +i+'</span>')
-            }
-            $thisB.find('.itm:last').append('<i class="J-del">X</i>');
-            $thisB.find('.itm:first').find('.J-del').remove();
-        }
-
-        $('.J-addMod').click(function(){
-
-            var box = $(this).parent();
-            var title = box.attr('data-title');
-            var num = box.find('.itm').length;
-            var name = box.attr('data-modspace');
-            var JSONname = name.split('-')[1]+'s';
-            var JmodSpace = 'J-' +name;
-            if (num < 4){
-
-                var $tpl = $('.'+JmodSpace+':last');
-                var tplHTML = $tpl.html();
-                var newModSpace = name+'-'+(num+1);
-                $tpl.after('<tr class="'+JmodSpace+'" data-index="'+ (num+1) +'">'+ tplHTML +'</tr>');
-                $tpl = $('.'+JmodSpace+':last');
-                $tpl.find('.mod-space').attr('data-name',newModSpace);
-                $.demoLoad([newModSpace]);
-
-                nums[JSONname] = num+1;
-
-                $('#numOfBlocks').attr('value',JSON.stringify(nums));
-
-                $(this).siblings('.itm:last').find('.J-del').remove();
-                $(this).before('<span class="itm">'+ title + (num+1) +'<i class="J-del">X</i></span>');
-            }
-
-        });
-
-        $addCtrlbox.on('click','.J-del',function(){
-            var $thisBox = $(this).closest('.add-ctrlbox');
-            var index = $(this).parent().index();
-            var num = $thisBox.find('.itm').length;
-            var name = $(this).parents('.add-ctrlbox').attr('data-modspace');
-            var JSONname = name.split('-')[1]+'s';
-
-            if(num > 1){
-
-                $('.J-'+ name +':[data-index='+ (index+1) +']').remove();
-
-                $thisBox.find('.itm:last').remove();
-                nums[JSONname] = num-1;
-                $('#numOfBlocks').attr('value',JSON.stringify(nums));
-                if($thisBox.find('.itm:last').index('.itm') > 0){
-                    $thisBox.find('.itm:last').append('<i class="J-del">X</i>');
-                }
-            }
+    var mail = new MailMaker({
+        items: [
+            ['infor-month','月份'],
+            ['infor-firstTitle','头条动态 标题'],
+            ['infor-firstImg','头条动态 图片'],
+            ['infor-firstInner','头条动态 内容'],
+            ['infor-new-1','最新动态'],
+            ['infor-story-1','成功故事'],
+            ['infor-corpNew-title','标题'],
+            ['infor-corpNew','企业新闻'],
+            ['infor-study','外贸学堂'],
+            ['infor-report','行业报告'],
+            ['infor-other-title','标题'],
+            ['infor-other','其他内容']
+        ]
+    });
 
 
-        })
-
-    })
+//    $(function(){
+//
+//        var $addCtrlbox = $('.add-ctrlbox');
+//        var numOfBlocks = $('#numOfBlocks').val();
+//        var nums = JSON.parse(numOfBlocks);
+//        $addCtrlbox.find('.itm').remove();
+//
+//        addBlock('新闻',nums.news);
+//        addBlock('故事',nums.storys);
+//
+//        function addBlock(type,num){
+//            var $thisB = $('.add-ctrlbox[data-title='+type+']')
+//            for (var i = num;i> 0;i--){
+//                $thisB.prepend('<span class="itm">'+ type +i+'</span>')
+//            }
+//            $thisB.find('.itm:last').append('<i class="J-del">X</i>');
+//            $thisB.find('.itm:first').find('.J-del').remove();
+//        }
+//
+//        $('.J-addMod').click(function(){
+//
+//            var box = $(this).parent();
+//            var title = box.attr('data-title');
+//            var num = box.find('.itm').length;
+//            var name = box.attr('data-modspace');
+//            var JSONname = name.split('-')[1]+'s';
+//            var JmodSpace = 'J-' +name;
+//            if (num < 4){
+//
+//                var $tpl = $('.'+JmodSpace+':last');
+//                var tplHTML = $tpl.html();
+//                var newModSpace = name+'-'+(num+1);
+//                $tpl.after('<tr class="'+JmodSpace+'" data-index="'+ (num+1) +'">'+ tplHTML +'</tr>');
+//                $tpl = $('.'+JmodSpace+':last');
+//                $tpl.find('.mod-space').attr('data-name',newModSpace);
+//
+//                mail.loadMail();
+////                $.demoLoad([newModSpace]);
+//
+//                nums[JSONname] = num+1;
+//
+//                $('#numOfBlocks').attr('value',JSON.stringify(nums));
+//
+//                $(this).siblings('.itm:last').find('.J-del').remove();
+//                $(this).before('<span class="itm">'+ title + (num+1) +'<i class="J-del">X</i></span>');
+//            }
+//
+//        });
+//
+//        $addCtrlbox.on('click','.J-del',function(){
+//            var $thisBox = $(this).closest('.add-ctrlbox');
+//            var index = $(this).parent().index();
+//            var num = $thisBox.find('.itm').length;
+//            var name = $(this).parents('.add-ctrlbox').attr('data-modspace');
+//            var JSONname = name.split('-')[1]+'s';
+//
+//            if(num > 1){
+//
+//                $('.J-'+ name +':[data-index='+ (index+1) +']').remove();
+//
+//                $thisBox.find('.itm:last').remove();
+//                nums[JSONname] = num-1;
+//                $('#numOfBlocks').attr('value',JSON.stringify(nums));
+//                if($thisBox.find('.itm:last').index('.itm') > 0){
+//                    $thisBox.find('.itm:last').append('<i class="J-del">X</i>');
+//                }
+//            }
+//
+//
+//        })
+//
+//    })
 
 </script>
-<script type="text/javascript">
-    $(function () {
-        $.demoLoad([
-                'infor-month',
-                'infor-firstTitle',
-                'infor-firstImg',
-                'infor-firstInner',
-                'infor-new-1',
-                'infor-story-1',
-                'infor-corpNew-title',
-                'infor-corpNew',
-                'infor-study',
-                'infor-report',
-                'infor-other-title',
-                'infor-other'
-        ]);
-    })
-</script>
+
 
 <% include ../common/footer %>

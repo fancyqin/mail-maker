@@ -6,15 +6,19 @@
 }
 
 .demo-wrap {
-    position: relative;
-    height:100%;
+    position: fixed;
+    top:0;
+    left: 200px;
+    right: 0;
+    bottom: 0;
+    //height:100%;
     //display: table;
-    width:100%;
+    //width:100%;
     // border-radius: 3px;
     // box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
     // border: 1px solid #e6e6e6;
     background: #fff;
-    overflow: hidden;
+    //overflow: hidden;
     .demo-sider {
         position: absolute;
         top:0;
@@ -25,6 +29,14 @@
         // margin-right: -1px;
         // border-right: 1px solid #ccc;
         // background: #F4EAD5;
+        .demo-fixed{
+            position: absolute;
+            top:0;
+            right: 0;
+            bottom: 120px;
+            left: 0;
+            height: auto;
+        }
         .ctrl-box {
             //background: #ebebeb;
             width: 360px;
@@ -36,13 +48,10 @@
             width: 360px;
             margin: 0 auto;
             padding: 20px;
-            &.fixed{
-                position: fixed;
-                top:0;
-            }
-            .form-item{
-                margin-bottom: 120px;
-            }
+            //&.fixed{
+            //    position: fixed;
+            //    top:0;
+            //}
         }
         .btn-box{
             position: fixed;
@@ -54,7 +63,7 @@
             height: 120px;
             background: #fff;
             box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
-            z-index:1;
+            z-index:2;
             :focus{
                 outline: 0;
             }
@@ -88,15 +97,18 @@
     }
     .demo {
         //float: left;
-        position: relative;
-        margin-right: 400px;
-        height: 100%;
+        position: absolute;
+        right: 400px;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        //margin-right: 400px;
+        //height: 100%;
         vertical-align: top;
         overflow: hidden;
         // background: #ebebeb;
         .demo-fixed{
             overflow-x: auto;
-            min-height: 1000px;
             center{
                 display: none;
             }
@@ -119,7 +131,9 @@
         bottom: 0;
         z-index: 3;
         transition: all .3s;
-        &.open{
+    }
+    &.open{
+        .code-inner{
             left: 0;
         }
     }
@@ -127,14 +141,14 @@
         position: absolute;
         top:0;
         left:0;
-        width: 50px;
-        height:30px;
+        width: 40px;
+        height:24px;
         border: 1px solid #ccc;
         z-index: 4;
-        background: #F4EAD5;
+        background: rgba(255,255,255,.7);
         cursor: pointer;
         text-align: center;
-        line-height: 30px;
+        line-height: 24px;
         font-size: 14px;
         font-weight: bold;
     }
@@ -288,7 +302,7 @@
         position: absolute;
         top:0;
         right: -400px;
-        transition: all .5s;
+        transition: right .5s;
         opacity: 0;
         z-index:1;
         .upload-tips{

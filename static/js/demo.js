@@ -1,7 +1,98 @@
-$(function () {
+;void function(){
+    var defaults = {
+        items:[]
+    };
 
-    var isSaved = false;
+    var MailMaker = function(config){
+        var _this = this;
+        this.conf = $.extend(defaults,config);
 
+        this.paintHTMl();
+        this.loadMail();
+        this.showMeCode();
+    };
+
+    MailMaker.prototype.paintHTMl = function(){
+        var items = this.conf.items;
+
+        var len = items.length;
+
+        for (var i = 0; i < len; i++) {
+            var thisItem = items[i];
+            var thisTitle = thisItem[1] || 'Option';
+            var thisName = thisItem[0];
+            $('.J-mod-edit').append('<div class="form-item"><h4 class="form-title">'+ thisTitle +'</h4><div id='+thisName+'></div></div>')
+        }
+
+    };
+
+    MailMaker.prototype.loadMail = function(){
+        var items = this.conf.items;
+
+        var len = items.length;
+
+        for (var i = 0; i < len; i++) {
+            var thisItem = items[i];
+            var thisName = thisItem[0];
+            var thisTitle = thisItem[1] || 'Option';
+            var box = $(".mod-space[data-name=" + thisName + "]");
+            var type = box.attr('data-type');
+            var place = $('#' + thisName);
+
+            box.attr('data-titleZh',thisTitle);
+            switch (type) {
+                case 'img':
+                    newImg(box, place);
+                    break;
+                case 'txt':
+                    newTxt(box, place);
+                    break;
+                case 'richTxt':
+                    newEditor(box, place);
+                    break;
+                case 'btn':
+                    newBtn(box, place);
+                    break;
+            }
+        }
+
+    };
+
+    MailMaker.prototype.showMeCode = function(){
+        var _this = this;
+        var editor = ace.edit("codeInner");
+        var $wrap = $('.demo-wrap');
+        var $table = $('#tableInner');
+        var $trigger = $('.J-EditorCodeMode');
+        editor.setTheme("ace/theme/monokai");
+        var session = editor.getSession();
+        session.setMode("ace/mode/html");
+        session.setUseWrapMode(true);
+        //session.setUseSoftTabs(false);
+        //session.setOption('indentedSoftWrap', true);
+        $trigger.on('click',function(){
+            if ($wrap.hasClass('open')){
+                var code  = editor.getValue();
+                $table.html('').html(code);
+                _this.loadMail();
+                $wrap.removeClass('open');
+                $trigger.text('< / >');
+            }else{
+                $wrap.addClass('open');
+                var html = $table.html();
+                editor.setValue(html);
+                $trigger.text('WEB');
+            }
+        })
+
+    }
+
+
+
+    window.MailMaker = MailMaker;
+
+
+    /*
     $.extend({
         'demoLoad': function (name) {
             var num = name.length;
@@ -34,38 +125,38 @@ $(function () {
             }
         }
     });
-
+     */
 
 
     //富文本
     /*
-    function newEditor(box, placeholderID) {
-        var settings = {
-            toolbars: [
-                [   'undo','redo','|','bold', 'italic',  'underline',  'forecolor', '|', 'cleardoc',    '|','link',  '|', 'justifyleft', 'justifyright',  'justifycenter', '|', 'unlink'],
-                ['source', 'fontfamily', 'fontsize' ,'addbr']
-            ]
-            ,wordCount:false
-        };
-        var ue = UE.getEditor(placeholderID, settings);
-        var text = box.html().trim();
-        var pID = placeholderID.substring(0,(placeholderID.length - 5));
-        $('#'+pID).append('<div class="J-ph">加载中...</div>');
-        text = text.replace(/\s+|\n/g, " ").replace(/>\s</g, "><");
-        ue.ready(function(){
-            $('#'+pID).find('.J-ph').hide();
-            ue.setContent(text);
-            ue.addListener('contentChange', function (ue) {
-                var inner = this.getContent();
-                box.html(inner);
-                var $links = box.find('a');
-                if ($links) {
-                    $links.css({color: '#246bb3', textDecoration: 'none'})
-                }
-            })
-        })
-    }
-    */
+     function newEditor(box, placeholderID) {
+     var settings = {
+     toolbars: [
+     [   'undo','redo','|','bold', 'italic',  'underline',  'forecolor', '|', 'cleardoc',    '|','link',  '|', 'justifyleft', 'justifyright',  'justifycenter', '|', 'unlink'],
+     ['source', 'fontfamily', 'fontsize' ,'addbr']
+     ]
+     ,wordCount:false
+     };
+     var ue = UE.getEditor(placeholderID, settings);
+     var text = box.html().trim();
+     var pID = placeholderID.substring(0,(placeholderID.length - 5));
+     $('#'+pID).append('<div class="J-ph">加载中...</div>');
+     text = text.replace(/\s+|\n/g, " ").replace(/>\s</g, "><");
+     ue.ready(function(){
+     $('#'+pID).find('.J-ph').hide();
+     ue.setContent(text);
+     ue.addListener('contentChange', function (ue) {
+     var inner = this.getContent();
+     box.html(inner);
+     var $links = box.find('a');
+     if ($links) {
+     $links.css({color: '#246bb3', textDecoration: 'none'})
+     }
+     })
+     })
+     }
+     */
 
     function newEditor (box,place){
         var richTpl = $("#richTxtPlaceTpl").html();
@@ -77,7 +168,7 @@ $(function () {
         var listyles = box.attr('data-ulstyles');
         var h3styles = box.attr('data-h3styles');
 
-        place.append(tplPlace);
+        place.html('').append(tplPlace);
         place.find(rB).html(txt);
 
 
@@ -111,55 +202,56 @@ $(function () {
 
 
         /*
-        var beginX,beginY,thisW;
+         var beginX,beginY,thisW;
 
-        $(rB).on('mousedown',function(e){
-            e.stopPropagation();
-            isSelecting = true;
-            // console.log(isSelecting,e);
-            beginX = e.pageX;
-            beginY = e.pageY;
-        }).on('mouseup',function(e){
-            isSelecting = false;
-            e.stopPropagation();
-            var selection = window.getSelection();
-            var selectionInner = selection.toString();
-            var range = selection.rangeCount && selection.getRangeAt(0);
-            // var rangeText =  document.createRange();
-            var $richB = $('.J-rich-edit-box');
-            console.log(range);
+         $(rB).on('mousedown',function(e){
+         e.stopPropagation();
+         isSelecting = true;
+         // console.log(isSelecting,e);
+         beginX = e.pageX;
+         beginY = e.pageY;
+         }).on('mouseup',function(e){
+         isSelecting = false;
+         e.stopPropagation();
+         var selection = window.getSelection();
+         var selectionInner = selection.toString();
+         var range = selection.rangeCount && selection.getRangeAt(0);
+         // var rangeText =  document.createRange();
+         var $richB = $('.J-rich-edit-box');
+         console.log(range);
 
 
-            if(beginX && beginY){
-                var centerX = (beginX + e.clientX)/2;
-            }
-            if (selectionInner && centerX){
+         if(beginX && beginY){
+         var centerX = (beginX + e.clientX)/2;
+         }
+         if (selectionInner && centerX){
 
-                $richB.show();
-                thisW = $richB.width();
-                thisH = $richB.height();
-                $richB.css({
-                    left: (centerX - thisW/2) +'px',
-                    top: (beginY-thisH - 20) +'px'
-                })
-            }else {
-                $richB.hide()
-            }
-            //https://developer.mozilla.org/zh-CN/docs/Web/API/Range
-            //range.deleteContents();  //del
+         $richB.show();
+         thisW = $richB.width();
+         thisH = $richB.height();
+         $richB.css({
+         left: (centerX - thisW/2) +'px',
+         top: (beginY-thisH - 20) +'px'
+         })
+         }else {
+         $richB.hide()
+         }
+         //https://developer.mozilla.org/zh-CN/docs/Web/API/Range
+         //range.deleteContents();  //del
 
-            // console.log(isSelecting,selectionInner,range,e);
-        })
+         // console.log(isSelecting,selectionInner,range,e);
+         })
          */
 
     }
 
-    //图片
+//图片
 
     function newImg(box, place) {
         var imgTpl = $("#imgPlaceTpl").html();
         var tplPlace = template(imgTpl);
-        place.append(tplPlace);
+
+        place.html('').append(tplPlace);
 
         var $img = box.find('img');
         var imgSrc = $img.attr('src');
@@ -276,7 +368,7 @@ $(function () {
         //设置按钮编辑模板
         var btnTpl = $("#btnPlaceTpl").html();
         var tplPlace = template(btnTpl);
-        place.append(tplPlace);
+        place.html('').append(tplPlace);
 
 
         //设置按钮模板
@@ -345,7 +437,7 @@ $(function () {
 
         var txtTpl = $("#txtPlaceTpl").html();
         var tplPlace = template(txtTpl);
-        place.append(tplPlace);
+        place.html('').append(tplPlace);
 
         var $txtBox = box.find('.txtBox');
         var txt = $txtBox.text().trim();
@@ -357,6 +449,24 @@ $(function () {
             $txtBox.text(val);
         })
     }
+
+
+
+
+
+
+
+}.call(this);
+
+
+
+
+
+
+$(function () {
+
+    var isSaved = false;
+
 
 
     //WEB版地址
@@ -763,48 +873,23 @@ $(function () {
     obDOMchange();
 
 
-    function siderBarFixed(){
-        var $topBox = $('.demo-fixed .ctrl-box');
-        var $bottomBox = $('.demo-fixed .mod-box');
-        $(window).on('scroll',function(){
-            var top = $(window).scrollTop();
-            var ruleTop = $topBox[0].clientHeight +$topBox[0].offsetTop;
-
-            if (top > ruleTop){
-                $bottomBox.addClass('fixed');
-            }else {
-                $bottomBox.removeClass('fixed');
-            }
-
-        })
-    }
-    siderBarFixed();
-
-    function codeEditorMode(){
-        var editor = ace.edit("codeInner");
-        var $code = $('#codeInner');
-        var $table = $('#tableInner');
-        editor.setTheme("ace/theme/monokai");
-        var session = editor.getSession();
-        session.setMode("ace/mode/html");
-        session.setUseWrapMode(true);
-        //session.setUseSoftTabs(false);
-        //session.setOption('indentedSoftWrap', true);
-        $('.J-EditorCodeMode').hide();
-        $('.J-EditorCodeMode').on('click',function(){
-            if ($code.hasClass('open')){
-                var code  = editor.getValue();
-                $table.html('').html(code);
-                $code.removeClass('open');
-            }else{
-                $code.addClass('open');
-                var html = $table.html();
-                editor.setValue(html);
-            }
-        })
+    //function siderBarFixed(){
+    //    var $topBox = $('.demo-fixed .ctrl-box');
+    //    var $bottomBox = $('.demo-fixed .mod-box');
+    //    $(window).on('scroll',function(){
+    //        var top = $(window).scrollTop();
+    //        var ruleTop = $topBox[0].clientHeight +$topBox[0].offsetTop;
+    //
+    //        if (top > ruleTop){
+    //            $bottomBox.addClass('fixed');
+    //        }else {
+    //            $bottomBox.removeClass('fixed');
+    //        }
+    //
+    //    })
+    //}
+    //siderBarFixed();
 
 
-    }
-    codeEditorMode();
 
 });

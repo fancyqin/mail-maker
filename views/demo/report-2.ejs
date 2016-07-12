@@ -451,38 +451,44 @@
 </div>
 </div>
 
+
+
+
 <% include ../common/module %>
 <script type="text/javascript">
-    $(function () {
-        $.demoLoad([
-            'report-banner',
-            'report-mainImg-1',
-            'report-mainImg-2',
-            'report-mainTxt-1',
-            'report-mainTxt-2',
-            'report-btn',
-            'report-btn-2',
-            'report-Img-1',
-            'report-Img-2',
-            'report-Img-3',
-            'report-Img-4',
-            'report-Img-5',
-            'report-Txt-1',
-            'report-Txt-2',
-            'report-Txt-3',
-            'report-Txt-4',
-            'report-Txt-5',
-            'report-moreTxt',
-            'report-moreTxt-2',
-            'report-otherTxt-1',
-            'report-otherTxt-2',
-            'report-otherTxt-3',
-            'report-otherTxt-4',
-            'report-otherTxt-5',
-            'report-otherTxt-6',
-            'report-types'
-        ]);
+
+    var mail = new MailMaker({
+        items:[
+            ['report-banner','banner图片'],
+            ['report-mainImg-1','报告图片1'],
+            ['report-mainImg-2','报告图片2'],
+            ['report-mainTxt-1','报告内容1'],
+            ['report-mainTxt-2','报告内容2'],
+            ['report-btn','按钮'],
+            ['report-btn-2','按钮'],
+            ['report-Img-1','报告图片1'],
+            ['report-Img-2','报告图片2'],
+            ['report-Img-3','报告图片3'],
+            ['report-Img-4','报告图片4'],
+            ['report-Img-5','报告图片5'],
+            ['report-Txt-1','报告信息1'],
+            ['report-Txt-2','报告信息2'],
+            ['report-Txt-3','报告信息3'],
+            ['report-Txt-4','报告信息4'],
+            ['report-Txt-5','报告信息5'],
+            ['report-moreTxt','更多'],
+            ['report-moreTxt-2','更多'],
+            ['report-otherTxt-1','相关报告1'],
+            ['report-otherTxt-2','相关报告2'],
+            ['report-otherTxt-3','相关报告3'],
+            ['report-otherTxt-4','相关报告4'],
+            ['report-otherTxt-5','相关报告5'],
+            ['report-otherTxt-6','相关报告6'],
+            ['report-types','报告类型']
+        ]
     })
+
+
 </script>
 
 <% include ../common/footer %>
