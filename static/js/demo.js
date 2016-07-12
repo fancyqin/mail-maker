@@ -76,12 +76,14 @@
                 $table.html('').html(code);
                 _this.loadMail();
                 $wrap.removeClass('open');
-                $trigger.text('< / >');
+                $trigger.removeClass('fa-file-o').addClass('fa-code');
+
             }else{
                 $wrap.addClass('open');
                 var html = $table.html();
                 editor.setValue(html);
-                $trigger.text('WEB');
+                $trigger.removeClass('fa-code').addClass('fa-file-o');
+
             }
         })
 
@@ -194,6 +196,7 @@
             toolbar:{
                 buttons:['bold', 'italic', 'underline', 'anchor', 'orderedlist', 'unorderedlist','h3']
             },
+            buttonLabels:'fontawesome',
             paste:{
                 forcePlainText: true
             }

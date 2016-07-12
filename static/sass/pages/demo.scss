@@ -1,5 +1,6 @@
 @import "../lib/_reset.scss";
 @import "../lib/_layout.scss";
+@import "../lib/_font-awesome.scss";
 @import "_medium-editor.min.scss";
 .wrap {
 
@@ -141,7 +142,7 @@
         position: absolute;
         top:0;
         left:0;
-        width: 40px;
+        width: 26px;
         height:24px;
         border: 1px solid #ccc;
         z-index: 4;
@@ -162,6 +163,13 @@
         font-size: 14px;
         margin-bottom: 5px;
         color: #333;
+        em{
+            color: #e64545;
+            font-style: normal;
+            margin-left: 5px;
+            font-size: 18px;
+            line-height: 21px;
+        }
     }
     .form-fill {
         input[type='text'],textarea,.rich-box{
