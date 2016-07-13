@@ -5,7 +5,7 @@
         <div class="content">
             <div class="demo-wrap cf">
 
-                <input id="J-mail-module" type="hidden" value="节日">
+                <input id="J-mail-module" type="hidden" value="IAR报告">
 
                 <% include demo-common/ctrl-box.ejs %>
                 <div class="other-box">
@@ -23,7 +23,7 @@
                     <div id="tableInner" class="demo-fixed">
 
                         <% if (page == "cookMail") { %>
-                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
                             <tbody>
                             <tr>
                                 <td bgcolor="#ebebeb">
@@ -45,131 +45,133 @@
                                                             style="background:#ebebeb;font-size:30px;"
                                                             valign="middle">
                                                             <div class="mod-space" data-type="img"
-                                                                 data-name="festival-banner">
-                                                                <img
-                                                                        alt="" border="0"
-                                                                        src="http://design.vemic.com:2222/700x450"
-                                                                        style="vertical-align:top;"
-                                                                        title=""
-                                                                        width="700"/>
+                                                                 data-name="iar-banner">
+                                                                <a href="resources.made-in-china.com/industry-analysis-reports/">
+                                                                <img alt="" border="0" src="http://edm.made-in-china.com/MICEN/2016/7/3642-01.jpg" style="vertical-align:top;" title="" width="700"/>
+                                                                </a>
                                                             </div>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="padding:40px; font-family:Arial; font-size:16px; line-height:24px; color:#555;">
-                                                            <div class="mod-space" data-type="txt" data-name="festival-hello-title">
+                                                        <td style="padding:40px 40px 10px; font-family:Arial; font-size:16px; line-height:24px; color:#555;">
+                                                            <div class="mod-space" data-type="txt" data-name="iar-hello-title">
                                                                 <p class="J-webHello txtBox" style="margin: 10px 0; font-family:Arial; font-size:16px; line-height:27px; font-weight: bold; color:#222; ">Dear #{userName},</p>
                                                             </div>
                                                             <div class="mod-space" data-type="richTxt"
-                                                                 data-name="festival-inner" data-styles="margin: 10px 0;font-family:Arial; font-size:14px; line-height:24px; color:#555;">
-                                                                <p style="margin: 10px 0;font-family:Arial; font-size:14px; line-height:24px; color:#555; ">XXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXX XX XXXXX XXXXXXXXXXXXXXXXXXXXXXXX </p>
-                                                                <p style="margin: 10px 0;font-family:Arial; font-size:14px; line-height:24px; color:#555; ">XXXX XXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXXX XXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXXX XXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXX</p>
+                                                                 data-name="iar-inner" data-styles="margin: 10px 0;font-family:Arial; font-size:14px; line-height:24px; color:#555;">
                                                                 <p style="margin: 10px 0;font-family:Arial; font-size:14px; line-height:24px; color:#555; ">XXXXXXXXX xXXXXXXXXXX XXXXXXXXX  XXX    <a href="http://www.made-in-china.com/" style="text-decoration:none; color:#246bb3;">Made-in-China.com</a> XXXXXXXXXXXXX XXXXXXXXXXXXXXXXXX </p>
                                                             </div>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td style="padding:0 40px;">
-                                                            <table border="0" cellpadding="0" cellspacing="0"
-                                                                   width="100%">
+                                                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                                                 <tbody>
                                                                 <tr>
-                                                                    <td style="padding:0 0 20px 0;">
-                                                                        <div class="mod-space" data-type="txt"
-                                                                             data-name="festival-prod4-title">
-                                                                            <p class="txtBox"
-                                                                               style="font-family:Arial; font-size:16px; line-height:27px; font-weight: bolder; color:#222; ">TITLE XXXXX XXXXXX XXXXXXX</p>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <table cellpadding="0" cellspacing="0"
-                                                                               border="0" width="100%">
+                                                                    <td style="padding:40px 0; border-bottom:1px solid #ddd;">
+                                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                                                             <tbody>
                                                                             <tr>
-                                                                                <td width="160" align="left">
-                                                                                    <div class="mod-space"
-                                                                                         data-type="img"
-                                                                                         data-name="festival-prodImg-1">
-                                                                                        <a href="http://www.made-in-china.com/">
-                                                                                            <img src="http://design.vemic.com:2222/140x140" border="0" width="140" height="140">
-                                                                                        </a>
-                                                                                    </div>
-
-                                                                                </td>
-                                                                                <td width="160" align="left">
-                                                                                    <div class="mod-space"
-                                                                                         data-type="img"
-                                                                                         data-name="festival-prodImg-2">
-                                                                                        <a href="http://www.made-in-china.com/">
-                                                                                            <img src="http://design.vemic.com:2222/140x140" border="0" width="140" height="140">
-                                                                                        </a>
-                                                                                    </div>
-
-                                                                                </td>
-                                                                                <td width="160" align="left">
-                                                                                    <div class="mod-space"
-                                                                                         data-type="img"
-                                                                                         data-name="festival-prodImg-3">
-                                                                                        <a href="http://www.made-in-china.com/">
-                                                                                            <img src="http://design.vemic.com:2222/140x140" border="0" width="140" height="140">
-                                                                                        </a>
-                                                                                    </div>
-
-                                                                                </td>
-                                                                                <td width="140">
-                                                                                    <div class="mod-space"
-                                                                                         data-type="img"
-                                                                                         data-name="festival-prodImg-4">
-                                                                                        <a href="http://www.made-in-china.com/">
-                                                                                            <img src="http://design.vemic.com:2222/140x140" border="0" width="140" height="140">
-                                                                                        </a>
-                                                                                    </div>
-
+                                                                                <td style="vertical-align:top;" width="130">
+                                                                                    <a href="http://resources.made-in-china.com/article/industry-trends/AnDEMcQVRxlB/China-s-Extruders-Export-Analysis-in-2015/"><img alt="Medicine Industry Analysis Report" border="0" height="128" src="http://edm.made-in-china.com/MICEN/2016/7/3642-02.jpg" width="110"></a></td>
+                                                                                <td>
+                                                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                                                        <tbody>
+                                                                                        <tr>
+                                                                                            <td style="font-family:Arial; font-size:14px; line-height:20px; padding-bottom:16px;">
+                                                                                                <a href="http://resources.made-in-china.com/article/industry-trends/AnDEMcQVRxlB/China-s-Extruders-Export-Analysis-in-2015/" style="color:#246bb3; text-decoration:none;">China's Extruders Export Analysis</a></td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td style="font-family:Arial; font-size:12px; line-height:20px; color:#888;" valign="top">
+                                                                                                Jiangsu province and Shandong province were China's top export origins of extruders. Germany was the largest exporter of extruders in 2015.</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td style="text-align:left;padding-top:20px;">
+                                                                                                <a href="http://resources.made-in-china.com/article/industry-trends/AnDEMcQVRxlB/China-s-Extruders-Export-Analysis-in-2015/"><img alt="Reading Online Free" border="0" height="32" src="http://edm.focuschina.com:80/MICEN/2015/4/2875-btn.png" width="151"></a></td>
+                                                                                        </tr>
+                                                                                        </tbody>
+                                                                                    </table>
                                                                                 </td>
                                                                             </tr>
                                                                             </tbody>
                                                                         </table>
                                                                     </td>
                                                                 </tr>
-
                                                                 <tr>
-                                                                    <td style="padding:40px 0px;text-align: center">
-                                                                        <div class="mod-space" data-type="img" data-name="festival-btn">
-                                                                            <a href="http://www.made-in-china.com">
-                                                                                <img src="http://edm.made-in-china.com/MICEN/2015/3/pro-btn-more.png" alt="View More">
-                                                                            </a>
-                                                                        </div>
-                                                                        <%/*
-                                                                        <div class="mod-space" data-type="btn" data-name="festival-btn">
-                                                                            <input class="btnDetail" type="hidden" value='{"title":"View More","link":"http://www.made-in-china.com","width":"150px"}'>
-                                                                            <div class="btnWrap" style="margin:0; text-align: center;">
-                                                                            </div>
-                                                                            <script type="text/html" id="festival-btn-tpl">
-                                                                                <!--[if !mso]-->
-                                                                                <a class="btnBase" style="display: inline-block;padding:10px 30px 10px; font-family:'微软雅黑','Microsoft Yahei','宋体',SimSun,Arial,sans-serif; font-size:13px; line-height: 20px; color:#fff; text-align:center; background-color:#e64545; text-decoration:none !important; border-radius:3px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" href="{{= btnLink }}">{{= btnTxt}}</a>
-                                                                                <!--[endif]-->
-                                                                                <!--[if mso]-->
-                                                                                <v:roundrect
-                                                                                        xmlns:v="urn:schemas-microsoft-com:vml"
-                                                                                        href="{{= btnLink }}"
-                                                                                        style="width:{{= btnWidth}}"
-                                                                                        arcsize="8%"
-                                                                                        fillcolor="#e64545" stroke="f">
-                                                                                    <v:textbox
-                                                                                            style="mso-fit-shape-to-text:t"
-                                                                                            inset="0px,5px,0px,5px">
-                                                                                        <center style="font-size:13px;color:#FFFFFF;font-family:'微软雅黑','Microsoft Yahei','宋体',SimSun,Arial,sans-serif;mso-line-height-rule:exactly;mso-text-raise:4px">
-                                                                                            {{= btnTxt }}
-                                                                                        </center>
-                                                                                    </v:textbox>
-                                                                                </v:roundrect>
-                                                                                <!--[endif]-->
-                                                                            </script>
-                                                                        </div>
-                                                                        */%>
-
+                                                                    <td style="padding:40px 0; border-bottom:1px solid #ddd;">
+                                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                                            <tbody>
+                                                                            <tr>
+                                                                                <td style="vertical-align:top;" width="130">
+                                                                                    <a href="http://resources.made-in-china.com/article/industry-trends/AnDEMcQVRxlB/China-s-Extruders-Export-Analysis-in-2015/"><img alt="Medicine Industry Analysis Report" border="0" height="128" src="http://edm.made-in-china.com/MICEN/2016/7/3642-02.jpg" width="110"></a></td>
+                                                                                <td>
+                                                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                                                        <tbody>
+                                                                                        <tr>
+                                                                                            <td style="font-family:Arial; font-size:14px; line-height:20px; padding-bottom:16px;">
+                                                                                                <a href="http://resources.made-in-china.com/article/industry-trends/AnDEMcQVRxlB/China-s-Extruders-Export-Analysis-in-2015/" style="color:#246bb3; text-decoration:none;">China's Extruders Export Analysis</a></td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td style="font-family:Arial; font-size:12px; line-height:20px; color:#888;" valign="top">
+                                                                                                Jiangsu province and Shandong province were China's top export origins of extruders. Germany was the largest exporter of extruders in 2015.</td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td style="text-align:left;padding-top:20px;">
+                                                                                                <a href="http://resources.made-in-china.com/article/industry-trends/AnDEMcQVRxlB/China-s-Extruders-Export-Analysis-in-2015/"><img alt="Reading Online Free" border="0" height="32" src="http://edm.focuschina.com:80/MICEN/2015/4/2875-btn.png" width="151"></a></td>
+                                                                                        </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="padding:40px 0 20px;">
+                                                                        <table border="0" cellpadding="0" cellspacing="0">
+                                                                            <tbody>
+                                                                            <tr>
+                                                                                <td style="line-height:24px;font-family:Arial; font-size:16px; font-weight: bolder; color:#222; text-align:left;">
+                                                                                    Industry Analysis Reports</td>
+                                                                                <td style="padding:0 10px;line-height:20px;font-family:Arial; font-size:16px; color:#ebebeb ; text-align:left;">
+                                                                                    |</td>
+                                                                                <td style="line-height:20px;font-family:Arial; font-size:12px; text-align:left;">
+                                                                                    <a href="http://resources.made-in-china.com/industry-analysis-reports/" style="line-height:20px;font-family:Arial; font-size:12px; color:#246bb3; text-align:left;text-decoration: none;">View More&gt;</a></td>
+                                                                            </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="padding-bottom:40px;">
+                                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                                            <tbody>
+                                                                            <tr>
+                                                                                <td style="padding:0 5px 0 0;" width="120">
+                                                                                    <a href="http://resources.made-in-china.com/article/market-analysis/eEmQDbocOJlC-2016-219-2015-Ballpoint-Pencil-Industry-Analysis-Report/"><img alt="" border="0" height="160" src="http://edm.made-in-china.com/MICEN/2016/7/3642-08.jpg" width="120"></a></td>
+                                                                                <td style="padding:0 5px 0 0;" width="120">
+                                                                                    <a href="http://resources.made-in-china.com/article/market-analysis/CQmnioejgxIv-2016-19-2015-Chandeliers-Industry-Analysis-Report/"><img alt="" border="0" height="160" src="http://edm.made-in-china.com/MICEN/2016/7/3642-09.jpg" width="120"></a></td>
+                                                                                <td style="padding:0 5px 0 0;" width="120">
+                                                                                    <a href="http://resources.made-in-china.com/article/market-analysis/EQnxHeqEjJDs-2016-269-2015-Golf-Balls-Industry-Analysis-Report/"><img alt="" border="0" height="160" src="http://edm.made-in-china.com/MICEN/2016/7/3642-10.jpg" width="120"></a></td>
+                                                                                <td style="padding:0 5px 0 0; " width="120">
+                                                                                    <a href="http://resources.made-in-china.com/article/market-analysis/jJmxFqhMYQHl-2015-249-2014-Chemical-Industry-Analysis-Report/"><img alt="" border="0" height="160" src="http://edm.made-in-china.com/MICEN/2016/7/3642-11.jpg" width="120"></a></td>
+                                                                                <td style="padding:0 0 0 0px;" width="120">
+                                                                                    <a href="http://resources.made-in-china.com/article/market-analysis/imnxOokbsJDH-2015-209-2014-Agriculture-Food-Industry-Analysis-Report/"><img alt="" border="0" height="160" src="http://edm.made-in-china.com/MICEN/2016/7/3642-12.jpg" width="120"></a></td>
+                                                                            </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center" style="padding:0 0 40px;">
+                                                                        <table border="0" cellpadding="0" cellspacing="0">
+                                                                            <tbody>
+                                                                            <tr>
+                                                                                    <a href="http://kefu.trademessenger.com/chat/chatting?domain=micen&amp;referrer=http%3A%2F%2Fwww.made-in-china.com%2Faboutus%2Fcontact%2F&amp;businessType=YsxJmU8nmRo&amp;language=zh"><img alt="Need Help? Live Chat" border="0" height="40" src="http://edm.focuschina.com:80/MICEN/2015/3/live-chat-btn.png" title="Need Help? Live Chat" width="219"></a></td>
+                                                                            </tr>
+                                                                            </tbody>
+                                                                        </table>
                                                                     </td>
                                                                 </tr>
                                                                 </tbody>
@@ -390,7 +392,7 @@
                         </table>
 
                         <% }else if(page == "modifyMail"){ %>
-                            <%- mail.mailCode ? mail.mailCode : mail.mailHtml %>
+                        <%- mail.mailCode ? mail.mailCode : mail.mailHtml %>
                         <% }%>
                     </div>
                 </div>
@@ -407,15 +409,9 @@
 
     var mail = new MailMaker({
         items:[
-            ['festival-banner','banner图片'],
-            ['festival-inner','文本内容'],
-            ['festival-hello-title','招呼内容'],
-            ['festival-prod4-title','标题文字'],
-            ['festival-prodImg-1','产品图片1'],
-            ['festival-prodImg-2','产品图片2'],
-            ['festival-prodImg-3','产品图片3'],
-            ['festival-prodImg-4','产品图片4'],
-            ['festival-btn','按钮']
+            ['iar-banner','banner图片'],
+            ['iar-inner','文本内容'],
+            ['iar-hello-title','招呼内容']
         ]
     })
 
