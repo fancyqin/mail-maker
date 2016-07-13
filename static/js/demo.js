@@ -819,16 +819,19 @@ $(function () {
                     modtype(modType,Lang);
                     break;
                 case '2a':
+                    $lang.hide();
                     modType = tpl.mail_2a;
-                    modtype(modType,Lang);
+                    modtype(modType,'cn');
                     break;
                 case '2b':
+                    $lang.hide();
                     modType = tpl.mail_2b;
-                    modtype(modType,Lang);
+                    modtype(modType,'cn');
                     break;
                 case '2c':
+                    $lang.hide();
                     modType = tpl.mail_2c;
-                    modtype(modType,Lang);
+                    modtype(modType,'cn');
                     break;
             }
             $type.find('span').removeClass('on').siblings('span[data-type='+ Type +']').addClass('on');
@@ -841,6 +844,10 @@ $(function () {
             var typeVal = $target.attr('data-type');
             mailType.type = typeVal;
             if (typeVal === '1b'){
+                mailType.lang = 'en';
+            }else if (typeVal ==='2a' || typeVal ==='2b' || typeVal === '2c'){
+                mailType.lang = 'cn';
+            }else if (typeVal ==='1a' || typeVal ==='1c'){
                 mailType.lang = 'en';
             }
             $inputMailType.val(JSON.stringify(mailType));

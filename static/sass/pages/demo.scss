@@ -41,14 +41,19 @@
         .ctrl-box {
             //background: #ebebeb;
             width: 360px;
-            padding: 30px 0 10px;
-            border-bottom: 1px dashed #ccc;
+            padding: 30px 0 0;
             margin: 0 auto;
+        }
+        .other-box{
+            width: 360px;
+            margin: 0 auto;
+
         }
         .mod-box {
             width: 360px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 20px 0;
+            border-top: 1px dashed #ccc;
             //&.fixed{
             //    position: fixed;
             //    top:0;
