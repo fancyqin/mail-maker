@@ -1,7 +1,7 @@
 @import "../lib/_reset.scss";
 @import "../lib/_layout.scss";
 @import "../lib/_font-awesome.scss";
-@import "_medium-editor.min.scss";
+@import "../lib/_medium-editor.min";
 .wrap {
 
 }
@@ -167,7 +167,7 @@
             color: #e64545;
             font-style: normal;
             margin-left: 5px;
-            font-size: 18px;
+            font-size: 12px;
             line-height: 21px;
         }
     }
@@ -447,6 +447,13 @@
 
 .FOCUS_UPLOAD_wrap_hover{
     background-color:#e6ecf2;
+}
+
+.FOCUS_UPLOAD_wrap .upload-text::before{
+    content: "\f093";
+    font-family: FontAwesome;
+    margin-right: 10px;
+    color: #555;
 }
 
 
