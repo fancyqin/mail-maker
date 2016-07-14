@@ -5,11 +5,6 @@
     </div>
 </div>
 
-<!--<div class="rich-edit-box J-rich-edit-box">-->
-    <!--<button class=""> B </button>-->
-    <!--<button class=""> I </button>-->
-    <!--<button class=""> A </button>-->
-<!--</div>-->
 
 <!-- 操作区占位模板-->
 <script type="text/html" id="imgPlaceTpl">
@@ -70,7 +65,15 @@
     </div>
 
 </script>
+<script type="text/html" id="blockSettingTpl">
+    <div class="setting">
+        <ul>
+            <li><span class="fa fa-copy J-copyBlock"></span></li>
+            <li><span class="fa fa-trash J-delBlock"></span></li>
+        </ul>
+    </div>
 
+</script>
 <!--邮件头尾模板-->
 
 <script type="text/html" id="mail_1a_en_h">
@@ -1409,6 +1412,15 @@
 <script type="text/javascript" src="/js/lib/upload.min.js"></script>
 <script type="text/javascript" src="/js/demo.modules.js"></script>
 <script type="text/javascript" src="/js/demo.js"></script>
+
+<script type="text/javascript">
+    var options = eval($('#mailEditableOption').val());
+
+    var mail = new MailMaker({
+        items:options
+    })
+
+</script>
 
 <% if (page == "modifyMail") { %>
 <script type="text/javascript">

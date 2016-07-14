@@ -28,6 +28,30 @@
                     <div id="tableInner" class="demo-fixed">
 
                         <% if (page == "cookMail") { %>
+                        <input id="mailEditableOption" type="hidden" value="[
+                            ['report-banner','banner图片'],
+                            ['report-inner','文本内容'],
+                            ['report-btn','按钮'],
+                            ['report-Img-1','报告图片1'],
+                            ['report-Img-2','报告图片2'],
+                            ['report-Img-3','报告图片3'],
+                            ['report-Img-4','报告图片4'],
+                            ['report-Img-5','报告图片5'],
+                            ['report-Txt-1','报告信息1'],
+                            ['report-Txt-2','报告信息2'],
+                            ['report-Txt-3','报告信息3'],
+                            ['report-Txt-4','报告信息4'],
+                            ['report-Txt-5','报告信息5'],
+                            ['report-moreTxt','更多'],
+                            ['report-moreTxt-2','更多'],
+                            ['report-otherTxt-1','相关报告1'],
+                            ['report-otherTxt-2','相关报告2'],
+                            ['report-otherTxt-3','相关报告3'],
+                            ['report-otherTxt-4','相关报告4'],
+                            ['report-otherTxt-5','相关报告5'],
+                            ['report-otherTxt-6','相关报告6'],
+                            ['report-types','报告类型']
+                        ]">
                         <table border="0" cellpadding="0" cellspacing="0" width="100%">
                             <tbody>
                             <tr>
@@ -507,37 +531,4 @@
 
 
 <% include ../common/module %>
-<script type="text/javascript">
-
-
-    var mail = new MailMaker({
-        items:[
-            ['report-banner','banner图片'],
-            ['report-inner','文本内容'],
-            ['report-btn','按钮'],
-            ['report-Img-1','报告图片1'],
-            ['report-Img-2','报告图片2'],
-            ['report-Img-3','报告图片3'],
-            ['report-Img-4','报告图片4'],
-            ['report-Img-5','报告图片5'],
-            ['report-Txt-1','报告信息1'],
-            ['report-Txt-2','报告信息2'],
-            ['report-Txt-3','报告信息3'],
-            ['report-Txt-4','报告信息4'],
-            ['report-Txt-5','报告信息5'],
-            ['report-moreTxt','更多'],
-            ['report-moreTxt-2','更多'],
-            ['report-otherTxt-1','相关报告1'],
-            ['report-otherTxt-2','相关报告2'],
-            ['report-otherTxt-3','相关报告3'],
-            ['report-otherTxt-4','相关报告4'],
-            ['report-otherTxt-5','相关报告5'],
-            ['report-otherTxt-6','相关报告6'],
-            ['report-types','报告类型']
-        ]
-    })
-
-
-</script>
-
 <% include ../common/footer %>

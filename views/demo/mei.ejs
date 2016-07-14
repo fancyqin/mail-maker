@@ -16,6 +16,11 @@
                     <div id="tableInner" class="demo-fixed">
 
                         <% if (page == "cookMail") { %>
+                        <input id="mailEditableOption" type="hidden" value="[
+                            ['mei-banner','banner图片'],
+                            ['mei-inner','文本内容'],
+                            ['mei-hello-title','招呼内容']
+                        ]">
                         <table border="0" cellpadding="0" cellspacing="0" width="100%">
                             <tbody>
                             <tr>
@@ -365,17 +370,4 @@
 
 
 <% include ../common/module %>
-
-<script type="text/javascript">
-
-    var mail = new MailMaker({
-        items:[
-            ['mei-banner','banner图片'],
-            ['mei-inner','文本内容'],
-            ['mei-hello-title','招呼内容']
-        ]
-    })
-
-</script>
-
 <% include ../common/footer %>
