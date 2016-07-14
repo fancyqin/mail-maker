@@ -883,22 +883,66 @@ $(function () {
     obDOMchange();
 
 
-    function mailBlockHover(){
+    function mailBlockCopy(){
+        var block = '.J-block';
         var settingTpl = template($('#blockSettingTpl').html());
-        $('#tableInner').on('mouseenter','.J-block',function(){
+        $('#tableInner').on('mouseenter',block,function(){
             $(this).addClass('hover');
-            $(this).find('td').append(settingTpl);
-        }).on('mouseleave','.J-block',function(){
+            $(this).find('td:first').append(settingTpl);
+        }).on('mouseleave',block,function(){
             $(this).removeClass('hover').find('.setting').remove();
         });
 
-        $('.J-block').on('click','.J-copyBlock',function(){
-            
-        }).on('click','.J-delBlock',function(){
+        $('#tableInner').on('click','.J-copyBlock',function(){
+            var $box = $(this).closest(block);
+            var copy = $box.prop('outerHTML');
+            var options = eval($('#mailEditableOption').val());
+            $('body').append('<table class="J-copyTemp" style="display: none">'+copy+'</table>');
 
-        })
+            var $spaces = $('.J-copyTemp').find('.mod-space');
+            $('.J-copyTemp').find(block).removeClass('hover').find('.setting').remove();
+            var array = [];
+            var name;
+            for (var i = 0;i< $spaces.length;i++){
+                name = $spaces.eq(i).attr('data-name')+'-'+ new Date().getTime().toString(36);
+                $spaces.eq(i).attr('data-name',name);
+                array.push([name,'copyOptions']);
+                options.push([name,'copyOptions']);
+                $('#mailEditableOption').val(JSON.stringify(options));
+            }
+            var afterCopy = $('.J-copyTemp .mod-block').prop('outerHTML');
+            $('.J-copyTemp').remove();
+
+            $box.after(afterCopy);
+
+            var newMail = new MailMaker({items:array});
+
+
+        }).on('click','.J-delBlock',function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            var $box = $(this).closest(block);
+            var options = eval($('#mailEditableOption').val());
+            var $spaces = $box.find('.mod-space');
+            var name;
+            for (var i = 0;i< $spaces.length;i++){
+                name = $spaces.eq(i).attr('data-name');
+                options.splice(findIndex(name,options),1);
+                $('#mailEditableOption').val(JSON.stringify(options));
+            }
+            $box.remove();
+
+        });
+
+        function findIndex(name,array){
+            for (var j = 0;j< array.length ;j++){
+                if(array[j][0] === name){
+                    return j;
+                }
+            }
+        }
     }
-    mailBlockHover();
+    mailBlockCopy();
 
 
 
