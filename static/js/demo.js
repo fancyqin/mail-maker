@@ -901,6 +901,7 @@ $(function () {
 
             var $spaces = $('.J-copyTemp').find('.mod-space');
             $('.J-copyTemp').find(block).removeClass('hover').find('.setting').remove();
+            $('.J-copyTemp').find('.mod-space').removeClass('current');
             var array = [];
             var name;
             for (var i = 0;i< $spaces.length;i++){
@@ -918,20 +919,24 @@ $(function () {
             var newMail = new MailMaker({items:array});
 
 
-        }).on('click','.J-delBlock',function(e){
-            e.preventDefault();
-            e.stopPropagation();
-            var $box = $(this).closest(block);
-            var options = eval($('#mailEditableOption').val());
-            var $spaces = $box.find('.mod-space');
-            var name;
-            for (var i = 0;i< $spaces.length;i++){
-                name = $spaces.eq(i).attr('data-name');
-                options.splice(findIndex(name,options),1);
-                $('#mailEditableOption').val(JSON.stringify(options));
-            }
-            $box.remove();
+        }).on('click','.J-delBlock',function(){
 
+            var len = $(this).closest('table').find(block).length;
+
+            if (len ===1){
+                alert('不能再删了');
+            }else{
+                var $box = $(this).closest(block);
+                var options = eval($('#mailEditableOption').val());
+                var $spaces = $box.find('.mod-space');
+                var name;
+                for (var i = 0;i< $spaces.length;i++){
+                    name = $spaces.eq(i).attr('data-name');
+                    options.splice(findIndex(name,options),1);
+                    $('#mailEditableOption').val(JSON.stringify(options));
+                }
+                $box.remove();
+            }
         });
 
         function findIndex(name,array){
